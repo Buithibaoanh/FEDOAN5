@@ -1,0 +1,31 @@
+.content{
+    margin-top: 200px;
+    margin-bottom: 40px;
+}
+.form-label{
+    font-size: 1.6rem;
+}
+.tile{
+    font-size: 3rem;
+    font-weight: 400;
+}
+.check{
+    margin-top: 24px;
+}
+.ip-check{
+    width: 16px;
+    height: 16px;
+}
+.lb-check{
+    font-size: 1.6rem;
+    padding-left: 12px;
+    user-select: none;
+}
+.table-oder{
+    font-size: 1.6rem;
+    margin-bottom: 44px;
+}
+.btn-oder{
+    width: 100%;
+    padding: 12px 0;
+}

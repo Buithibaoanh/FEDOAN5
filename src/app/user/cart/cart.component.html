@@ -1,0 +1,67 @@
+<section id="cart_items" style="margin-top: 160px;font-size: 16px;">
+    <div class="container">
+        <div class="container-sp__link " style="margin-top: 20px;margin-bottom:20px ;">
+            <a href="../HTML/Index.html">Trang chủ</a>
+            <i class="container-sp__icons fa-solid fa-chevron-right"></i>
+            <!-- <a href="" style="color: black">Tivi SamSung</a> -->
+        </div>
+        <div class="table-responsive cart_info" style="overflow: hidden;border: 1px solid #E6E4DF;">
+            <table class="table table-condensed" >
+                <thead>
+                    <tr class="cart_menu" style="background-color: #00a2ff;">
+                        <td class="image">Ảnh</td>
+                        <td class="description">Sản Phẩm</td>
+                        <td class="price">Giá</td>
+                        <td class="quantity">Số Lượng</td>
+                        <td class="total">Tổng Tiền</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let item of cartItems">
+                        <td class="cart_product">
+                            <img src="../../../assets/user_UI/IMG/{{item.Anh}}" alt="" style="width: auto;height: 100px;">
+                        </td>
+                        <td class="cart_price">
+                            <h4>{{item.TenSanPham}}</h4>
+                            
+                        </td>
+                        <td class="cart_price">
+                            <p>{{item.Gia | currency:'VND':'symbol':'1.0-0' }}</p>
+                        </td>
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button">
+                                <button class="cart_quantity_up" href="" (click)="increaseQuantity(item)"> + </button>
+                                <input class="cart_quantity_input" type="text" name="quantity" autocomplete="off" size="2" [(ngModel)]="item.quantity">
+                                <button class="cart_quantity_down"  href="" (click)="decreaseQuantity(item)"> - </button>
+                            </div>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price">{{item.totalPrice | currency:'VND':'symbol':'1.0-0' }}</p>
+                        </td>
+                        <td class="cart_delete">
+
+                            <button class="cart_quantity_delete" (click)="removeFromCart(i)"  href=""><i class="fa fa-times"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+<section id="do_action">
+    <div class="container">    
+        <div >
+            <div style="width: 100%;font-size: 16px;">
+                <div class="total_area" style="border: 1px solid #E6E4DF; margin-top:20px; margin-bottom: 20px;">
+                    <ul style="list-style: none;">
+                        
+                        <li style="background: #E6E4DF; color: #696763;margin-top: 10px;padding: 7px 20px;margin-right: 20px;">Tổng thanh toán <span>{{ total | currency:'VND':'symbol':'1.0-0'  }}</span></li>
+                    </ul>
+                        <button class="btn btn-default update" href=""  style="font-size: 16px;background-color: #00a2ff;margin-left: 20px;margin: 20px;padding: 5px;">Cập nhật</button>
+                        <a class="btn btn-default check_out" href="/checkout" style="font-size: 16px;background-color: #00a2ff;">Thủ tục thanh toán</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#do_action-->

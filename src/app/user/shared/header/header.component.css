@@ -1,0 +1,23 @@
+@import url('../../../../assets/user_UI/CSS/main.css');
+
+:root {
+    --text-coler:#333 ;
+    --white-coler : #ffffff;
+    --black-coler : #000;
+    --blue-coler:#00a2ff;
+    --price-coler:#ee4d2d;
+    --Header-height:160px ;
+    --navbar-height:28px;
+    --Header-navbar-height:45px;
+    --Header-with-search-height: calc(var(--Header-height) - var(--navbar-height) - var(--Header-navbar-height) );
+    --star-coler:#bdbdbd;
+    --container-color: #f3f3f3;
+    --content-sale: #f7f7f7;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; 
+    line-height: 1.6rem;/* 62.5% thì 1rem=10px*/
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}

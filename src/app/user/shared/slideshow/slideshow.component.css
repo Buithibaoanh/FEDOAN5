@@ -1,0 +1,11 @@
+
+.slideshow {
+    width: 100%;
+    margin-top: var(--Header-height);
+    
+}
+
+.carousel-inner img{
+    width: 100%;
+    object-fit: cover;
+}

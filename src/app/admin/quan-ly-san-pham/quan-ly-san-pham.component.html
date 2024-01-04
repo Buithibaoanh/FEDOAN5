@@ -1,0 +1,135 @@
+<div  class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Quản lý sản phẩm</h6>
+            <button class="btn btn--primary" (click) ="showModal('create')">Thêm mới</button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                         
+                            <th>Tên Loại</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Anh</th>
+                            <th>Số lượng</th>
+                            <th>Mô tả</th>
+                            
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let item of SanPhamDataApi | paginate: { itemsPerPage: 10, currentPage: p }">
+                          
+                            <td>{{ item.TenLoai }}</td>
+                            <td>{{ item.TenSanPham }}</td>
+                            <td> <img src="../assets/img/{{item.Anh}}" alt="" style="width: 100px; height: auto;"></td>
+                            <td>{{ item.SoLuong }}</td>
+                            <td>{{ item.Mota }}</td>
+                            
+                            <td class="table__data-td">
+                                <button class="edit__btn"  (click) ="editModalDepartment(item.MaSanPham)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-edit fas fa-pen"></i></button>
+                                <button class="delete__btn" (click) ="deleteLoaiSp(item.MaSanPham)" ><i class="table__icon table__icon-delete fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        
+                        
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- begin: modal -->
+<div class="manager__modal">
+    <!-- begin: modal-content -->
+    <div class="manager__modal-content" style="overflow: auto;">
+        <div class="manager__container modal__header">
+            <div class="manager__modal-title">
+                <h5>Thông Tin sản phẩm</h5>
+            </div>
+
+            <div class="manager__modal-close" (click) ="closeModal()">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <div class="manager__container modal__body">
+            <form class="form" action="#">
+                
+                
+                <ng-container *ngIf="modalType === 'create' ; else updateContent">
+                    <div class="form__item">
+                        <label class="form__label">Tên sản phẩm</label>
+                        <input type="text" class="form__input form__input-name" name="TenSanPham" [(ngModel)]="TenSanPham" placeholder="Nhập tên sản phẩm">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label">Mã Loại </label>
+                        <input type="text" class="form__input form__input-name" name="MaLoai" [(ngModel)]="MaLoai" placeholder="MaLoai">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label">Ảnh</label>
+                        <input type="text" class="form__input form__input-name" name="Anh" [(ngModel)]="Anh" placeholder="Nhập tên sản phẩm">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label">Số lượng</label>
+                        <input type="text" class="form__input form__input-name" name="SoLuong" [(ngModel)]="SoLuong" placeholder="Nhập tên sản phẩm">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label">Mô tả</label>
+                        <input type="text" class="form__input form__input-name" name="Mota" [(ngModel)]="Mota" placeholder="Mô tả">
+                    </div>
+                </ng-container>
+                <ng-template #updateContent>
+                    <div class="form__item">
+                        <label class="form__label">Tên sản phẩm</label>
+                        <input type="text" class="form__input form__input-name" name="TenSanPham" [(ngModel)]="SanPhamGetByIdData.TenSanPham" placeholder="Nhập tên sản phẩm">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label">Mã Loại Loại</label>
+                        <input type="text" class="form__input form__input-name" name="MaLoai" [(ngModel)]="SanPhamGetByIdData.MaLoai" placeholder="MaLoai">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label">Ảnh</label>
+                        <input type="text" class="form__input form__input-name" name="Anh" [(ngModel)]="SanPhamGetByIdData.Anh" placeholder="">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label">Số lượng</label>
+                        <input type="text" class="form__input form__input-name" name="soluong" [(ngModel)]="SanPhamGetByIdData.SoLuong" placeholder="">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label">Mô tả</label>
+                        <input type="text" class="form__input form__input-name" name="Mota" [(ngModel)]="SanPhamGetByIdData.Mota" placeholder="">
+                    </div>
+                </ng-template>
+                <button class="btn btn--primary btn--submit" type="submit" (click) ="submitForm()">
+                    {{ modalType === 'create' ? 'Xác nhận' : 'Cập nhật' }}
+                </button>
+            </form>
+            <input class="get-index" type="hidden" value="">
+        </div>
+    </div>
+    <!-- end: modal-content -->
+
+    <!-- begin: alert-validate -->
+    <div class="manager__modal-alert">
+        <div class="manager__modal-alert__item alert--danger__case00">
+            <div class="alert__item-icon alert--danger">
+                <i class="far fa-exclamation-circle"></i>
+            </div>
+            <div class="alert__item-content">
+                <p>Tên chuyên ngành không được để trống, thử lại</p>
+            </div>
+            <div class="alert__item-close">
+                <i class="fal fa-times"></i>
+            </div>
+        </div>
+    </div>
+    <!-- end: alert-validate -->
+</div>
+<!-- end: modal -->
+
+
