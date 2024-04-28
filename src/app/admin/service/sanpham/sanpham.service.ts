@@ -1,6 +1,7 @@
 import { HttpClient  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import jsPDF from 'jspdf';
 
 
 @Injectable({
@@ -37,6 +38,13 @@ export class SanphamService {
         return this.http.delete(`${this.baseURL}/QLSanpham/remove/${id}`);
     }
   
-
+	generatePDF(htmlContent: string, fileName: string) {
+		const doc = new jsPDF();
+		doc.html(htmlContent, {
+		  callback: (doc) => {
+			doc.save(fileName);
+		  }
+		});
+	  }
   
 }

@@ -55,6 +55,9 @@
             <div class="manager__modal-close" (click) ="closeModal()">
                 <i class="fas fa-times"></i>
             </div>
+            <!-- your-component.component.html -->
+        
+
         </div>
 
         <div class="manager__container modal__body">
@@ -113,7 +116,7 @@
         </div>
     </div>
     <!-- end: modal-content -->
-
+    <button (click)="genPDF()">Export to PDF</button>
     <!-- begin: alert-validate -->
     <div class="manager__modal-alert">
         <div class="manager__modal-alert__item alert--danger__case00">

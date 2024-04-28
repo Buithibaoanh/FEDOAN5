@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SanphamService } from '../service/sanpham/sanpham.service';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-quan-ly-san-pham',
@@ -17,20 +18,39 @@ export class QuanLySanPhamComponent {
     SoLuong:number = 0;
     Mota:string = '';
     SanPhamGetByIdData: any = [];
+    @ViewChild('pdfContent') pdfContent!: ElementRef;
     
     p: number = 1;
+    
     ngOnInit(): void {
         this.getData();
     }
     
 
-    getData(){
+    getData() {
         this.sanphamService.getList().subscribe((res) => {
-            this.SanPhamDataApi = res;
+          // Gọi hàm để tạo PDF khi dữ liệu đã được nhận
+          this.generatePDF(res);
+        });
+      }
+    
+      generatePDF(data: any) {
+        const doc = new jsPDF();
         
-        })
-    }
-
+        // Format dữ liệu để hiển thị trong PDF
+        let pdfContent = '';
+        data.forEach((item: any, index: number) => {
+          pdfContent += `Item ${index + 1}: ${JSON.stringify(item)}\n`;
+        });
+    
+        // Thêm nội dung vào PDF và lưu
+        doc.text(pdfContent, 10, 10);
+        doc.save('data.pdf');
+      }
+      genPDF() {
+        const htmlContent = this.pdfContent.nativeElement.innerHTML;
+        this.sanphamService.generatePDF(htmlContent, 'file.pdf');
+      }
     showModal(type: 'create' | 'update') {
         document.querySelector('.manager__modal')?.classList.add('active');
         document.querySelector('.manager__modal-content')?.classList.add('scale-up-center');
@@ -111,5 +131,5 @@ export class QuanLySanPhamComponent {
         })
         alert("Bạn có muốn xóa sản phẩm không?.")
     }
-
+   
 }
