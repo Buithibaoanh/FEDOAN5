@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { TrangchuService } from '../../service/trangchu/trangchu.service';
+import { CartService } from '../../service/cart/cart.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,11 +11,14 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderComponent {
-  constructor(private trangchuService : TrangchuService, private router: Router) {}
+  constructor(private trangchuService : TrangchuService, private router: Router, private cartService : CartService) {}
     TrangChuLSPApi: any = [];
+    cartItems: any;
     ngOnInit(): void {
       this.getLoaisanpham();
-      
+      this.cartService.getCartItems().subscribe((items: any[]) => {
+        this.cartItems = items.length;
+      });
     }
     
     getLoaisanpham(){

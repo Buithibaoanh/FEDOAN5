@@ -30,27 +30,10 @@ export class QuanLySanPhamComponent {
     getData() {
         this.sanphamService.getList().subscribe((res) => {
           // Gọi hàm để tạo PDF khi dữ liệu đã được nhận
-          this.generatePDF(res);
+          this.SanPhamDataApi = res;
         });
       }
     
-      generatePDF(data: any) {
-        const doc = new jsPDF();
-        
-        // Format dữ liệu để hiển thị trong PDF
-        let pdfContent = '';
-        data.forEach((item: any, index: number) => {
-          pdfContent += `Item ${index + 1}: ${JSON.stringify(item)}\n`;
-        });
-    
-        // Thêm nội dung vào PDF và lưu
-        doc.text(pdfContent, 10, 10);
-        doc.save('data.pdf');
-      }
-      genPDF() {
-        const htmlContent = this.pdfContent.nativeElement.innerHTML;
-        this.sanphamService.generatePDF(htmlContent, 'file.pdf');
-      }
     showModal(type: 'create' | 'update') {
         document.querySelector('.manager__modal')?.classList.add('active');
         document.querySelector('.manager__modal-content')?.classList.add('scale-up-center');

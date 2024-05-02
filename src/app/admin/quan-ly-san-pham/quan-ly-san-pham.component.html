@@ -10,23 +10,22 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                         
                             <th>Tên Loại</th>
                             <th>Tên sản phẩm</th>
                             <th>Anh</th>
                             <th>Số lượng</th>
+                            <th>Đã bán</th>
                             <th>Mô tả</th>
-                            
                             <th>Chức năng</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor = "let item of SanPhamDataApi | paginate: { itemsPerPage: 10, currentPage: p }">
-                          
                             <td>{{ item.TenLoai }}</td>
                             <td>{{ item.TenSanPham }}</td>
                             <td> <img src="../assets/img/{{item.Anh}}" alt="" style="width: 100px; height: auto;"></td>
-                            <td>{{ item.SoLuong }}</td>
+                            <td>{{ item.SoLuong - item.TongSoLuongDaBan }}</td>
+                            <td>{{ item.TongSoLuongDaBan }}</td>
                             <td>{{ item.Mota }}</td>
                             
                             <td class="table__data-td">
@@ -34,8 +33,6 @@
                                 <button class="delete__btn" (click) ="deleteLoaiSp(item.MaSanPham)" ><i class="table__icon table__icon-delete fas fa-trash"></i></button>
                             </td>
                         </tr>
-                        
-                        
                     </tbody>
                 </table>
                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
@@ -116,7 +113,7 @@
         </div>
     </div>
     <!-- end: modal-content -->
-    <button (click)="genPDF()">Export to PDF</button>
+    <!-- <button (click)="genPDF()">Export to PDF</button> -->
     <!-- begin: alert-validate -->
     <div class="manager__modal-alert">
         <div class="manager__modal-alert__item alert--danger__case00">

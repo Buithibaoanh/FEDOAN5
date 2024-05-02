@@ -13,6 +13,7 @@ export class DetailComponent implements OnInit{
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private trangchu: TrangchuService, private cartService : CartService,private decimalPipe: DecimalPipe){}
   MaSanPham: any;
   Data: any;
+  cartItems: any;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.MaSanPham = params['id'];
@@ -29,10 +30,13 @@ export class DetailComponent implements OnInit{
   }
 
   add(item : any){
-    console.log(item);
+    let data = this.Data[0];
+    if((data.SoLuong - parseInt(data.TongSoLuongDaBan)) === 0) {
+      alert("Sản phẩm hiện tại đã hết hàng");
+      return
+    }
+    
     this.cartService.addToCart(item);
     alert("Bạn đã thêm thành công sản phẩm vào giỏ hàng")   
   }
-
-
 }
