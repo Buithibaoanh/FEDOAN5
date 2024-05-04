@@ -50,6 +50,7 @@ export class CheckoutComponent implements OnInit{
         this.cartService.clearCart();
       });
     
-      alert("Thanh toán thành công! Cảm ơn bạn đã mua hàng.")  
+      alert("Thanh toán thành công! Cảm ơn bạn đã mua hàng.");
+      window.location.href = "/";
   }
 }
