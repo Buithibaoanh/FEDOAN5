@@ -7,6 +7,8 @@ import { DonhangComponent } from './donhang/donhang.component';
 import { ChitietdonhangComponent } from './chitietdonhang/chitietdonhang.component';
 import { ThongkeComponent } from './thongke/thongke.component';
 import { ThongketheothangComponent } from './thongketheothang/thongketheothang.component';
+import { KhoComponent } from './kho/kho.component';
+import { DetailKhoComponent } from './detail-kho/detail-kho.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,14 @@ const routes: Routes = [
   {
     path: 'sanpham',
     component: QuanLySanPhamComponent
+  },
+  {
+    path: 'kho',
+    component: KhoComponent
+  },
+  {
+    path: 'detailsKho/:id',
+    component: DetailKhoComponent
   },
   {
     path: 'donhang',

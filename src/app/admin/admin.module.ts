@@ -18,6 +18,8 @@ import { ChitietdonhangComponent } from './chitietdonhang/chitietdonhang.compone
 import { ThongkeComponent } from './thongke/thongke.component';
 import { ThongketheothangComponent } from './thongketheothang/thongketheothang.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { KhoComponent } from './kho/kho.component';
+import { DetailKhoComponent } from './detail-kho/detail-kho.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DonhangComponent,
     ChitietdonhangComponent,
     ThongkeComponent,
-    ThongketheothangComponent
+    ThongketheothangComponent,
+    KhoComponent,
+    DetailKhoComponent
   ],
   imports: [
     CommonModule,

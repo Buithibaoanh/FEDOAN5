@@ -15,10 +15,10 @@ export class SanphamService {
   private baseURL = `http://localhost:3000`;
   
 
-  getList() : Observable<any[]> {
-      return this.http.get<any>(`${this.baseURL}/QLSanpham`);
-  }
-  getById(id : number) : Observable<any> {
+	getList() : Observable<any[]> {
+		return this.http.get<any>(`${this.baseURL}/QLSanpham`);
+	}
+  	getById(id : number) : Observable<any> {
 		return this.http.get<any>(`${this.baseURL}/QLSanpham/get-one/${id}`);
 	}
 
@@ -37,6 +37,10 @@ export class SanphamService {
 	deleteLoaiSp(id: number): Observable<any> {
         return this.http.delete(`${this.baseURL}/QLSanpham/remove/${id}`);
     }
+
+	search(request: any): Observable<any> {
+		return this.http.post(`${this.baseURL}/QLSanpham/search`, request);
+	}
   
 	generatePDF(htmlContent: string, fileName: string) {
 		const doc = new jsPDF();

@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SanphamService } from '../service/sanpham/sanpham.service';
 import jsPDF from 'jspdf';
+import { LoaisanphamService } from '../service/loaisanpham/loaisanpham.service';
 
 @Component({
   selector: 'app-quan-ly-san-pham',
@@ -8,23 +9,33 @@ import jsPDF from 'jspdf';
   styleUrls: ['./quan-ly-san-pham.component.css']
 })
 export class QuanLySanPhamComponent {
-  constructor(private sanphamService : SanphamService) {}
+  constructor(private sanphamService : SanphamService, private loaisanphamService : LoaisanphamService) {}
     SanPhamDataApi: any = [];
     modalType: 'create' | 'update' = 'create';
-    MaLoai:number=0;
+    MaLoai: any;
     TenLoai:string = '';
     TenSanPham:string = '';
     Anh:string = '';
-    SoLuong:number = 0;
+    SoLuong: any;
     Mota:string = '';
     SanPhamGetByIdData: any = [];
+    MaSanPham: any;
+    dataDropdown: any;
+    keyword: any;
     @ViewChild('pdfContent') pdfContent!: ElementRef;
     
     p: number = 1;
     
     ngOnInit(): void {
         this.getData();
+        this.getDropdownKho();
     }
+
+    getDropdownKho() {
+        this.loaisanphamService.getList().subscribe(res => {
+            this.dataDropdown = res;
+        })
+      }
     
 
     getData() {
@@ -73,10 +84,10 @@ export class QuanLySanPhamComponent {
 
         let body = {
             TenSanPham: this.TenSanPham,
-            MaLoai: this.MaLoai,
+            MaLoai: parseInt(this.MaLoai),
             TenLoai: this.TenLoai,
             Anh: this.Anh,
-            SoLuong: this.SoLuong,
+            SoLuong: parseInt(this.SoLuong),
             Mota: this.Mota
 
         }
@@ -108,11 +119,33 @@ export class QuanLySanPhamComponent {
     }
 
     deleteLoaiSp(Id: number){
-        this.sanphamService.deleteLoaiSp(Id).subscribe(res => {
+        document.querySelector('.manager__alert')?.classList.add('active');
+        document.querySelector('.manager__alert-content')?.classList.add('scale-up-center');
+        this.MaSanPham = Id;
+        
+    }
+
+    closePopup() {
+        document.querySelector('.manager__alert')?.classList.remove('active');
+        document.querySelector('.manager__alert-content')?.classList.remove('scale-up-center');
+    }
+
+    deleteConfirm(){
+        this.sanphamService.deleteLoaiSp(this.MaSanPham).subscribe(res => {
             this.getData();
-            
+            this.closePopup();
         })
-        alert("Bạn có muốn xóa sản phẩm không?.")
+        alert("Xóa thành công!")
+    }
+
+    search() {
+        console.log(this.keyword);
+        var data = {
+            keyword: this.keyword
+        }
+        this.sanphamService.search(data).subscribe(res => {
+            this.SanPhamDataApi = res;
+        })
     }
    
 }

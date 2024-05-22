@@ -14,6 +14,7 @@ export class HeaderComponent {
   constructor(private trangchuService : TrangchuService, private router: Router, private cartService : CartService) {}
     TrangChuLSPApi: any = [];
     cartItems: any;
+    keyword: any;
     ngOnInit(): void {
       this.getLoaisanpham();
       this.cartService.getCartItems().subscribe((items: any[]) => {

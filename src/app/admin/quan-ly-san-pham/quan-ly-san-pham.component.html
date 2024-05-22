@@ -3,6 +3,10 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">Quản lý sản phẩm</h6>
+            <div>
+                <input type="text" name="keyword" [(ngModel)]="keyword" placeholder="Tìm kiếm" />
+                <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+            </div>
             <button class="btn btn--primary" (click) ="showModal('create')">Thêm mới</button>
         </div>
         <div class="card-body">
@@ -24,7 +28,7 @@
                             <td>{{ item.TenLoai }}</td>
                             <td>{{ item.TenSanPham }}</td>
                             <td> <img src="../assets/img/{{item.Anh}}" alt="" style="width: 100px; height: auto;"></td>
-                            <td>{{ item.SoLuong - item.TongSoLuongDaBan }}</td>
+                            <td>{{ item.SoLuong}}</td>
                             <td>{{ item.TongSoLuongDaBan }}</td>
                             <td>{{ item.Mota }}</td>
                             
@@ -59,8 +63,6 @@
 
         <div class="manager__container modal__body">
             <form class="form" action="#">
-                
-                
                 <ng-container *ngIf="modalType === 'create' ; else updateContent">
                     <div class="form__item">
                         <label class="form__label">Tên sản phẩm</label>
@@ -68,7 +70,11 @@
                     </div>
                     <div class="form__item">
                         <label class="form__label">Mã Loại </label>
-                        <input type="text" class="form__input form__input-name" name="MaLoai" [(ngModel)]="MaLoai" placeholder="MaLoai">
+                        <!-- <input type="text" class="form__input form__input-name" name="MaLoai" [(ngModel)]="MaLoai" placeholder="MaLoai"> -->
+                        <select class="form__input " name="MaLoai" [(ngModel)]="MaLoai">
+                            <option selected>-- Tên loại --</option>
+                            <option *ngFor="let item of dataDropdown" [value]="item.MaLoai">{{ item.TenLoai }}</option>                       
+                        </select>
                     </div>
                     <div class="form__item">
                         <label class="form__label">Ảnh</label>
@@ -112,24 +118,31 @@
             <input class="get-index" type="hidden" value="">
         </div>
     </div>
-    <!-- end: modal-content -->
-    <!-- <button (click)="genPDF()">Export to PDF</button> -->
-    <!-- begin: alert-validate -->
-    <div class="manager__modal-alert">
-        <div class="manager__modal-alert__item alert--danger__case00">
-            <div class="alert__item-icon alert--danger">
-                <i class="far fa-exclamation-circle"></i>
-            </div>
-            <div class="alert__item-content">
-                <p>Tên chuyên ngành không được để trống, thử lại</p>
-            </div>
-            <div class="alert__item-close">
-                <i class="fal fa-times"></i>
-            </div>
-        </div>
-    </div>
-    <!-- end: alert-validate -->
 </div>
 <!-- end: modal -->
+
+<!-- begin: alert-delete -->
+<div class="manager__alert" >
+    <div class="manager__alert-content" >
+        <div class="manager__container modal__header">
+            <div class="manager__modal-title">
+                <h5>THÔNG BÁO</h5>
+            </div>
+
+            <div class="manager__modal-close" (click)="closePopup()">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <ng-container >
+            <div class="manager__container alert__body">
+                <h6>Bạn có chức muốn xóa sản phẩm mã <span class="get-id-del">{{ MaSanPham }}</span>  khỏi hệ thống?</h6>
+                <div class="alert__btn manager_btn-confirm" >
+                    <button class="btn btn--error btn__agree" type="submit" (click)="deleteConfirm()">Xác nhận</button>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
 
 

@@ -31,12 +31,22 @@ export class DetailComponent implements OnInit{
 
   add(item : any){
     let data = this.Data[0];
-    if((data.SoLuong - parseInt(data.TongSoLuongDaBan)) === 0) {
+    if(data.SoLuong === 0) {
       alert("Sản phẩm hiện tại đã hết hàng");
-      return
+      return;
     }
     
     this.cartService.addToCart(item);
     alert("Bạn đã thêm thành công sản phẩm vào giỏ hàng")   
+  }
+
+  addItem(item : any) {
+    if(item.SoLuong === 0){
+      alert("Sản phẩm hiện tại đã hết hàng");
+      return;
+    }
+    this.cartService.clearCart();
+    this.cartService.addToCart(item);
+    window.location.href = "/checkout";
   }
 }

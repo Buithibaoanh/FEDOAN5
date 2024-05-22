@@ -28,6 +28,9 @@ export class TrangchuService {
   getcategori(id : number) : Observable<any> {
 		return this.http.get<any>(`${this.baseURL}/trangchu/categori/${id}`);
 	}
+  search(request: any): Observable<any> {
+		return this.http.post(`${this.baseURL}/trangchu/search`, request);
+	}
 
 	
 }
