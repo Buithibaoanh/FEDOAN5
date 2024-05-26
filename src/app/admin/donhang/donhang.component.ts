@@ -47,7 +47,7 @@ export class DonhangComponent {
     {
       if (this.modalType === 'update') {
           
-          this.updateDonHang();;
+          // this.updateDonHang();;
       }
       // Đóng modal sau khi tạo mới hoặc cập nhật
       this.closeModal();
@@ -59,16 +59,14 @@ export class DonhangComponent {
           
       })
     }
-    updateDonHang()
+    updateDonHang(Id: number)
     {
       let body = 
       {
-        TrangThai : this.DonHangGetByIdData.TrangThai
+        TrangThai : 1
       } 
-      var id = this.DonHangGetByIdData.MaDonHang;
-      console.log(id);
     
-      this.donhangService.putdonhang(id, body).subscribe(res => 
+      this.donhangService.putdonhang(Id, body).subscribe(res => 
         {
           this.getData();
           window.location.href = "/admin/sanpham";

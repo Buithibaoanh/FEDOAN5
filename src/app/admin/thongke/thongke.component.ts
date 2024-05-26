@@ -18,7 +18,6 @@ export class ThongkeComponent {
     Thongke(){
         console.log(this.day);
         
-        
         this.thongkeService.getday(this.day).subscribe((res) => {
             this.data = res;
 
@@ -27,7 +26,6 @@ export class ThongkeComponent {
             // Calculate total quantity
             this.totalQuantity = this.calculateTotalQuantity(this.data);
 
-            
         })
 
     }
