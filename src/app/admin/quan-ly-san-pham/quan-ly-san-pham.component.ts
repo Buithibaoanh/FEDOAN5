@@ -17,6 +17,7 @@ export class QuanLySanPhamComponent {
     TenSanPham:string = '';
     Anh:string = '';
     SoLuong: any;
+    Gia: any;
     Mota:string = '';
     SanPhamGetByIdData: any = [];
     MaSanPham: any;
@@ -87,6 +88,7 @@ export class QuanLySanPhamComponent {
             MaLoai: parseInt(this.MaLoai),
             TenLoai: this.TenLoai,
             Anh: this.Anh,
+            Gia: parseInt(this.Gia),
             SoLuong: parseInt(this.SoLuong),
             Mota: this.Mota
 
@@ -103,19 +105,22 @@ export class QuanLySanPhamComponent {
     }
 
     updateLoaiSp(){
+        
         let body = {
             TenSanPham : this.SanPhamGetByIdData.TenSanPham,
             MaLoai : this.SanPhamGetByIdData.MaLoai,
             Anh : this.SanPhamGetByIdData.Anh,
             SoLuong : this.SanPhamGetByIdData.SoLuong,
+            Gia:this.SanPhamGetByIdData.Gia,
             Mota: this.SanPhamGetByIdData.Mota, 
-        } 
+        }         
         var id = this.SanPhamGetByIdData.MaSanPham;
-        
         this.sanphamService.putLoaiSp(id, body).subscribe(res => {
+            console.log(res);
+            
             this.getData();
+            alert("Sửa sản phẩm thành công.")     
         });  
-        alert("Sửa sản phẩm thành công.")     
     }
 
     deleteLoaiSp(Id: number){
@@ -139,13 +144,25 @@ export class QuanLySanPhamComponent {
     }
 
     search() {
-        console.log(this.keyword);
-        var data = {
-            keyword: this.keyword
+        if (!this.keyword) {
+            this.sanphamService.getList().subscribe(res => {
+                this.SanPhamDataApi = res;
+            });
+        } else {
+            var data = {
+                keyword: this.keyword
+            }
+            this.sanphamService.search(data).subscribe(res => {
+                this.SanPhamDataApi = res;
+            });
         }
-        this.sanphamService.search(data).subscribe(res => {
-            this.SanPhamDataApi = res;
-        })
+        // console.log(this.keyword);
+        // var data = {
+        //     keyword: this.keyword
+        // }
+        // this.sanphamService.search(data).subscribe(res => {
+        //     this.SanPhamDataApi = res;
+        // })
     }
    
 }

@@ -28,8 +28,8 @@
                             <td>{{item.SoDienThoai}}</td>
                             <td>{{item.NgayDat| date:'dd-MM-YYYY HH:mm:ss '}}</td>
                             
-                            <td><span [ngClass]="{'bg-danger': item.TrangThaiText === 'Pending', 'bg-success': item.TrangThaiText === 'Processed'}" style="border-radius: 0.35rem; padding: 0.25rem 0.4rem;color: #fff;">{{item.TrangThaiText}}</span></td>
-                            <td><button (click)="viewChitietDH(item.MaDonHang)" style="background-color: #6777ef;border-radius: 0.35rem; padding: 0.25rem 0.4rem;color: #fff;">Detail</button></td>
+                            <td><span [ngClass]="{'bg-danger': item.TrangThaiText === 'Chờ xác nhận', 'bg-success': item.TrangThaiText === 'Đã xác nhận'}" style="border-radius: 0.35rem; padding: 0.25rem 0.4rem;color: #fff;">{{item.TrangThaiText}}</span></td>
+                            <td><button (click)="viewChitietDH(item.MaDonHang)" style="background-color: #6777ef;border-radius: 0.35rem; padding: 0.25rem 0.4rem;color: #fff;">Xem chi tiết</button></td>
                             <td class="table__data-td">
                                 <button class="edit__btn"  (click) ="editModalDepartment(item.MaDonHang)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-edit fas fa-pen"></i></button>
                                 

@@ -36,4 +36,7 @@ export class LoaisanphamService {
 	deleteLoaiSp(id: number): Observable<any> {
         return this.http.delete(`${this.baseURL}/loaisp/remove/${id}`);
     }
+	search(request: any): Observable<any> {
+		return this.http.post(`${this.baseURL}/loaisp/search`, request);
+	}
 }

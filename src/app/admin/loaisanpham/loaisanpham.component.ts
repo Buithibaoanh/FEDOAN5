@@ -12,6 +12,7 @@ export class LoaisanphamComponent implements OnInit {
     modalType: 'create' | 'update' = 'create';
     TenLoai: any;
     LoaiSanPhamGetByIdData: any = [];
+    keyword: any;
     p: number = 1;
     ngOnInit(): void {
         this.getData();
@@ -89,6 +90,27 @@ export class LoaisanphamComponent implements OnInit {
             this.getData();
             
         })
+    }
+    search() {
+        if (!this.keyword) {
+            this.loaisanphamService.getList().subscribe(res => {
+                this.LoaiSanPhamDataApi = res;
+            });
+        } else {
+            var data = {
+                keyword: this.keyword
+            }
+            this.loaisanphamService.search(data).subscribe(res => {
+                this.LoaiSanPhamDataApi = res;
+            });
+        }
+        // console.log(this.keyword);
+        // var data = {
+        //     keyword: this.keyword
+        // }
+        // this.sanphamService.search(data).subscribe(res => {
+        //     this.SanPhamDataApi = res;
+        // })
     }
 
     

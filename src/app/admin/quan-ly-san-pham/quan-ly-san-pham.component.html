@@ -3,11 +3,22 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">Quản lý sản phẩm</h6>
-            <div>
+            <!-- <div>
                 <input type="text" name="keyword" [(ngModel)]="keyword" placeholder="Tìm kiếm" />
                 <button type="button" class="btn btn-primary" (click)="search()">Search</button>
-            </div>
+            </div> -->
+                      
             <button class="btn btn--primary" (click) ="showModal('create')">Thêm mới</button>
+        </div>
+        
+        <div class="input-group" style="width: 50%; margin-left: 50px; margin-top: 20px;border: 1px solid #e3e6f0">
+            <input type="text" name="keyword" [(ngModel)]="keyword" class="form-control bg-light border-0 small" placeholder="Tìm tên sản phẩm,tên mã loại..." style="height: auto;"
+                aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append" style="background-color: #4e73df;">
+                <button class="btn btn-primary" type="button" (click)="search()" style="color: floralwhite;">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -16,8 +27,9 @@
                         <tr>
                             <th>Tên Loại</th>
                             <th>Tên sản phẩm</th>
-                            <th>Anh</th>
+                            <th>Ảnh</th>
                             <th>Số lượng</th>
+                            <th>Giá bán</th>
                             <th>Đã bán</th>
                             <th>Mô tả</th>
                             <th>Chức năng</th>
@@ -29,6 +41,7 @@
                             <td>{{ item.TenSanPham }}</td>
                             <td> <img src="../assets/img/{{item.Anh}}" alt="" style="width: 100px; height: auto;"></td>
                             <td>{{ item.SoLuong}}</td>
+                            <td>{{ item.Gia|currency:'VND':'symbol':'1.0-0'}}</td>
                             <td>{{ item.TongSoLuongDaBan }}</td>
                             <td>{{ item.Mota }}</td>
                             
@@ -71,18 +84,22 @@
                     <div class="form__item">
                         <label class="form__label">Mã Loại </label>
                         <!-- <input type="text" class="form__input form__input-name" name="MaLoai" [(ngModel)]="MaLoai" placeholder="MaLoai"> -->
-                        <select class="form__input " name="MaLoai" [(ngModel)]="MaLoai">
-                            <option selected>-- Tên loại --</option>
+                        <select class="form__input " name="MaLoai" [(ngModel)]="MaLoai"placeholder="Chọn loại sản phẩm">
+                            <option selected disabled >-- Tên loại --</option>
                             <option *ngFor="let item of dataDropdown" [value]="item.MaLoai">{{ item.TenLoai }}</option>                       
                         </select>
                     </div>
                     <div class="form__item">
                         <label class="form__label">Ảnh</label>
-                        <input type="text" class="form__input form__input-name" name="Anh" [(ngModel)]="Anh" placeholder="Nhập tên sản phẩm">
+                        <input type="text" class="form__input form__input-name" name="Anh" [(ngModel)]="Anh" placeholder="Tải ảnh lên">
                     </div>
                     <div class="form__item">
                         <label class="form__label">Số lượng</label>
-                        <input type="text" class="form__input form__input-name" name="SoLuong" [(ngModel)]="SoLuong" placeholder="Nhập tên sản phẩm">
+                        <input type="text" class="form__input form__input-name" name="SoLuong" [(ngModel)]="SoLuong" placeholder="Nhập số lượng">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label">Gía bán</label>
+                        <input type="text" class="form__input form__input-name" name="Gia" [(ngModel)]="Gia" placeholder="Nhập giá bán">
                     </div>
                     <div class="form__item">
                         <label class="form__label">Mô tả</label>
@@ -95,8 +112,12 @@
                         <input type="text" class="form__input form__input-name" name="TenSanPham" [(ngModel)]="SanPhamGetByIdData.TenSanPham" placeholder="Nhập tên sản phẩm">
                     </div>
                     <div class="form__item">
-                        <label class="form__label">Mã Loại Loại</label>
-                        <input type="text" class="form__input form__input-name" name="MaLoai" [(ngModel)]="SanPhamGetByIdData.MaLoai" placeholder="MaLoai">
+                        <label class="form__label">Mã Loại </label>
+                        <!-- <input type="text" class="form__input form__input-name" name="MaLoai" [(ngModel)]="MaLoai" placeholder="MaLoai"> -->
+                        <select class="form__input " name="MaLoai" [(ngModel)]="SanPhamGetByIdData.MaLoai" placeholder="Chọn loại sản phẩm">
+                            <option selected disabled >-- Tên loại --</option>
+                            <option *ngFor="let item of dataDropdown" [value]="item.MaLoai">{{ item.TenLoai }}</option>                       
+                        </select>
                     </div>
                     <div class="form__item">
                         <label class="form__label">Ảnh</label>
@@ -105,6 +126,10 @@
                     <div class="form__item">
                         <label class="form__label">Số lượng</label>
                         <input type="text" class="form__input form__input-name" name="soluong" [(ngModel)]="SanPhamGetByIdData.SoLuong" placeholder="">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label">Gía bán</label>
+                        <input type="text" class="form__input form__input-name" name="Gia" [(ngModel)]="SanPhamGetByIdData.Gia" placeholder="">
                     </div>
                     <div class="form__item">
                         <label class="form__label">Mô tả</label>

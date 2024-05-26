@@ -13,6 +13,7 @@ export class TrangchuComponent {
     TrangChuGetByIdData: any = [];
     TrangChuLSPApi: any = [];
     TrangChuGetspmvData:any = [];
+    keyword: any;
     ngOnInit(): void {
         this.getData(this.sl);
         this.getspmv(this.sl);
@@ -35,7 +36,27 @@ export class TrangchuComponent {
     viewDetail(MaSanPham: number ) {      
       this.router.navigate(['details', MaSanPham]);
     }
-    
+    search(sl: number) {
+      if (!this.keyword) {
+          this.trangchuService.getList(sl).subscribe(res => {
+              this.TrangChuDataApi = res;
+          });
+      } else {
+          var data = {
+              keyword: this.keyword
+          }
+          this.trangchuService.search(data).subscribe(res => {
+              this.TrangChuDataApi = res;
+          });
+      }
+      // console.log(this.keyword);
+      // var data = {
+      //     keyword: this.keyword
+      // }
+      // this.sanphamService.search(data).subscribe(res => {
+      //     this.SanPhamDataApi = res;
+      // })
+  }
     
    
 }

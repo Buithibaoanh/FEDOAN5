@@ -5,6 +5,15 @@
             <h6 class="m-0 font-weight-bold text-primary">Quản lý loại sản phẩm</h6>
             <button class="btn btn--primary" (click) ="showModal('create')">Thêm mới</button>
         </div>
+        <div class="input-group" style="width: 50%; margin-left: 50px; margin-top: 20px;border: 1px solid #e3e6f0">
+            <input type="text" name="keyword" [(ngModel)]="keyword" class="form-control bg-light border-0 small" placeholder="Tìm tên loại..." style="height: auto;"
+                aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append" style="background-color: #4e73df;">
+                <button class="btn btn-primary" type="button" (click)="search()" style="color: floralwhite;">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

@@ -71,6 +71,7 @@ export class DonhangComponent {
       this.donhangService.putdonhang(id, body).subscribe(res => 
         {
           this.getData();
+          window.location.href = "/admin/sanpham";
         });       
     }
 
