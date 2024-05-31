@@ -43,8 +43,8 @@
                             <td>{{ item.SoLuong}}</td>
                             <td>{{ item.Gia|currency:'VND':'symbol':'1.0-0'}}</td>
                             <td>{{ item.TongSoLuongDaBan }}</td>
-                            <td>{{ item.Mota }}</td>
-                            
+                            <!-- <td>{{ item.Mota }}</td> -->
+                            <td [innerHTML]="item.Mota"></td>
                             <td class="table__data-td">
                                 <button class="edit__btn"  (click) ="editModalDepartment(item.MaSanPham)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-edit fas fa-pen"></i></button>
                                 <button class="delete__btn" (click) ="deleteLoaiSp(item.MaSanPham)" ><i class="table__icon table__icon-delete fas fa-trash"></i></button>
@@ -84,7 +84,7 @@
                     <div class="form__item">
                         <label class="form__label">Mã Loại </label>
                         <!-- <input type="text" class="form__input form__input-name" name="MaLoai" [(ngModel)]="MaLoai" placeholder="MaLoai"> -->
-                        <select class="form__input " name="MaLoai" [(ngModel)]="MaLoai"placeholder="Chọn loại sản phẩm">
+                        <select class="form__input " name="MaLoai" [(ngModel)]="MaLoai" placeholder="Chọn loại sản phẩm">
                             <option selected disabled >-- Tên loại --</option>
                             <option *ngFor="let item of dataDropdown" [value]="item.MaLoai">{{ item.TenLoai }}</option>                       
                         </select>
@@ -103,7 +103,8 @@
                     </div>
                     <div class="form__item">
                         <label class="form__label">Mô tả</label>
-                        <ckeditor [editor]="Editor" [(ngModel)]="Mota" name="Mota"></ckeditor>
+                        <!-- <ckeditor [editor]="Editor" [(ngModel)]="Mota" name="Mota"></ckeditor> -->
+                        <ckeditor [(ngModel)]="Mota" [editor]="Editor" name="Mota"></ckeditor>
                         
                     </div>
                 </ng-container>
@@ -134,8 +135,7 @@
                     </div>
                     <div class="form__item">
                         <label class="form__label">Mô tả</label>
-                        <!-- <input type="text" class="form__input form__input-name" name="Mota" [(ngModel)]="SanPhamGetByIdData.Mota" placeholder=""> -->
-                        <ckeditor [editor]="Editor" [(ngModel)]="Mota" name="Mota"></ckeditor>
+                        <ckeditor [(ngModel)]="SanPhamGetByIdData.Mota" [editor]="Editor" name="Mota"></ckeditor>
                     </div>
                 </ng-template>
                 <button class="btn btn--primary btn--submit" type="submit" (click) ="submitForm()">

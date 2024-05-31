@@ -3,8 +3,6 @@ import { SanphamService } from '../service/sanpham/sanpham.service';
 import jsPDF from 'jspdf';
 import { LoaisanphamService } from '../service/loaisanpham/loaisanpham.service';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
-
 @Component({
   selector: 'app-quan-ly-san-pham',
   templateUrl: './quan-ly-san-pham.component.html',
@@ -30,15 +28,6 @@ export class QuanLySanPhamComponent {
     
     p: number = 1;
 
-    public onReady( editor: DecoupledEditor ): void {
-        const element = editor.ui.getEditableElement()!;
-        const parent = element.parentElement!;
-    
-        parent.insertBefore(
-          editor.ui.view.toolbar.element!,
-          element
-        );
-    }
     
     ngOnInit(): void {
         this.getData();
@@ -99,20 +88,16 @@ export class QuanLySanPhamComponent {
         let body = {
             TenSanPham: this.TenSanPham,
             MaLoai: parseInt(this.MaLoai),
-            TenLoai: this.TenLoai,
             Anh: this.Anh,
             Gia: parseInt(this.Gia),
             SoLuong: parseInt(this.SoLuong),
             Mota: this.Mota
-
         }
-        console.log(body);
-        alert("Thêm sản phẩm thành công.")
-
+        
         this.sanphamService.postLoaiSp(body).subscribe(res => {
+            alert("Thêm sản phẩm thành công.")
             this.closeModal();
             this.getData();
-
         })
         
     }
