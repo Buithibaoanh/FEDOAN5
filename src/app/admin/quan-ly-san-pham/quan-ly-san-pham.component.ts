@@ -2,6 +2,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SanphamService } from '../service/sanpham/sanpham.service';
 import jsPDF from 'jspdf';
 import { LoaisanphamService } from '../service/loaisanpham/loaisanpham.service';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 
 @Component({
   selector: 'app-quan-ly-san-pham',
@@ -10,6 +12,7 @@ import { LoaisanphamService } from '../service/loaisanpham/loaisanpham.service';
 })
 export class QuanLySanPhamComponent {
   constructor(private sanphamService : SanphamService, private loaisanphamService : LoaisanphamService) {}
+    public Editor = ClassicEditor;
     SanPhamDataApi: any = [];
     modalType: 'create' | 'update' = 'create';
     MaLoai: any;
@@ -26,6 +29,16 @@ export class QuanLySanPhamComponent {
     @ViewChild('pdfContent') pdfContent!: ElementRef;
     
     p: number = 1;
+
+    public onReady( editor: DecoupledEditor ): void {
+        const element = editor.ui.getEditableElement()!;
+        const parent = element.parentElement!;
+    
+        parent.insertBefore(
+          editor.ui.view.toolbar.element!,
+          element
+        );
+    }
     
     ngOnInit(): void {
         this.getData();

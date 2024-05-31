@@ -60,7 +60,7 @@
 <!-- begin: modal -->
 <div class="manager__modal">
     <!-- begin: modal-content -->
-    <div class="manager__modal-content" style="overflow: auto;">
+    <div class="manager__modal-content" style="overflow: auto; max-width: 903px;">
         <div class="manager__container modal__header">
             <div class="manager__modal-title">
                 <h5>Thông Tin sản phẩm</h5>
@@ -103,7 +103,8 @@
                     </div>
                     <div class="form__item">
                         <label class="form__label">Mô tả</label>
-                        <input type="text" class="form__input form__input-name" name="Mota" [(ngModel)]="Mota" placeholder="Mô tả">
+                        <ckeditor [editor]="Editor" [(ngModel)]="Mota" name="Mota"></ckeditor>
+                        
                     </div>
                 </ng-container>
                 <ng-template #updateContent>
@@ -133,7 +134,8 @@
                     </div>
                     <div class="form__item">
                         <label class="form__label">Mô tả</label>
-                        <input type="text" class="form__input form__input-name" name="Mota" [(ngModel)]="SanPhamGetByIdData.Mota" placeholder="">
+                        <!-- <input type="text" class="form__input form__input-name" name="Mota" [(ngModel)]="SanPhamGetByIdData.Mota" placeholder=""> -->
+                        <ckeditor [editor]="Editor" [(ngModel)]="Mota" name="Mota"></ckeditor>
                     </div>
                 </ng-template>
                 <button class="btn btn--primary btn--submit" type="submit" (click) ="submitForm()">

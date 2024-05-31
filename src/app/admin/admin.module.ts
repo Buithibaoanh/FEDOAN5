@@ -20,7 +20,7 @@ import { ThongketheothangComponent } from './thongketheothang/thongketheothang.c
 import { NgxPaginationModule } from 'ngx-pagination';
 import { KhoComponent } from './kho/kho.component';
 import { DetailKhoComponent } from './detail-kho/detail-kho.component';
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,8 @@ import { DetailKhoComponent } from './detail-kho/detail-kho.component';
     AdminRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CKEditorModule,
   ]
 })
 export class AdminModule { }
