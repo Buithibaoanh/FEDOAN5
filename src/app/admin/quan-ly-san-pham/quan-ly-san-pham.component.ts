@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SanphamService } from '../service/sanpham/sanpham.service';
 import jsPDF from 'jspdf';
 import { LoaisanphamService } from '../service/loaisanpham/loaisanpham.service';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import  ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 @Component({
   selector: 'app-quan-ly-san-pham',
   templateUrl: './quan-ly-san-pham.component.html',
@@ -10,7 +10,18 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class QuanLySanPhamComponent {
   constructor(private sanphamService : SanphamService, private loaisanphamService : LoaisanphamService) {}
-    public Editor = ClassicEditor;
+    Editor = ClassicEditor;
+    public config = {
+        toolbar: {
+          shouldNotGroupWhenFull: true,
+          items: [
+            'heading', '|',
+            'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|',
+            'undo', 'redo'
+          ]
+        },
+        height: 300 // Chiều cao của vùng nhập liệu
+      };
     SanPhamDataApi: any = [];
     modalType: 'create' | 'update' = 'create';
     MaLoai: any;

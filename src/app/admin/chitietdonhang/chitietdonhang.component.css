@@ -1,0 +1,108 @@
+.invoice {
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 50px;
+    line-height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .invoice-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .invoice-header h1 {
+    font-size: 24px;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .invoice-info {
+    margin-bottom: 20px;
+  }
+  .customer-info input{
+    padding: 5px;
+    width: 300px;
+    /* Đường gạch dưới input */
+    background-color: #fff;
+    color: #0b0b0b;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: medium;
+  }
+  .customer-info,
+  .invoice-details {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .customer-info label {
+    font-weight: bold;
+  }
+  .customer-info h2,
+  .invoice-details h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .product-list {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .product-list th,
+  .product-list td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .product-list th {
+    background-color: #f2f2f2;
+  }
+  
+  .total {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .total h3 {
+    font-size: 18px;
+    margin: 0;
+  }
+  #success{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  #success:hover{
+    background-color: greenyellow;
+  
+  }
+  .order-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Khoảng cách giữa các dòng, có thể điều chỉnh */
+  }
+  
+  .order-info-item label {
+    width: 200px; /* Chiều rộng cố định cho label, có thể điều chỉnh */
+    margin-right: 10px; /* Khoảng cách giữa label và p */
+  }
+  
+  .order-info-item p {
+    margin: 0; /* Loại bỏ khoảng cách mặc định của p */
+  }
+  .order-info-item label {
+    width: auto; /* Thay đổi từ width: 200px; thành width: auto; */
+    margin-right: 10px;
+    font-weight: bold; /* Thêm font-weight: bold; để làm nổi bật nhãn */
+  }
+  
+  .order-info-item p {
+    margin: 0; /* Loại bỏ khoảng cách mặc định của p */
+  }

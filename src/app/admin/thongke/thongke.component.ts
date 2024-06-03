@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ThongkeService } from '../service/thongke/thongke.service';
+import { formatDate } from '@angular/common';
+
 
 @Component({
   selector: 'app-thongke',
@@ -35,5 +37,17 @@ export class ThongkeComponent {
     
       private calculateTotalQuantity(data: any[]): number {
         return data.reduce((total, item) => total + Number(item.TongSoLuong), 0);
+      }
+      formatDate(dateString: any): string {
+        if (!dateString) { return ""; }
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) {
+          return "Invalid Date";
+        }
+    
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
       }
 }
