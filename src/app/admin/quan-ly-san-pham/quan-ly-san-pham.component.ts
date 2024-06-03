@@ -105,11 +105,10 @@ export class QuanLySanPhamComponent {
             Mota: this.Mota
         }
         
-        this.sanphamService.postLoaiSp(body).subscribe(res => {
-            alert("Thêm sản phẩm thành công.")
-            this.closeModal();
-            this.getData();
-        })
+        this.sanphamService.postLoaiSp(body).subscribe(res => {})
+        alert("Thêm sản phẩm thành công.")
+        this.closeModal();
+        location.reload();
         
     }
 

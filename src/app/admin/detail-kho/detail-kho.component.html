@@ -10,7 +10,6 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            
                             <th>Ảnh</th>
                             <th>Tên sản phẩm</th>
                             <th>Tên loại</th>
@@ -18,8 +17,7 @@
                             <th>Đơn giá</th>
                             <th>Số lượng nhập</th>
                             <th>Thành tiền</th>
-                         
-                         
+                            <td>Ngày tạo</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,7 +29,7 @@
                             <td>{{item.Gia| currency:'VND':'symbol':'1.0-0' }}</td>
                             <td>{{item.SoLuongNhap}}</td>
                             <td>{{item.Total| currency:'VND':'symbol':'1.0-0' }}</td>
-                         
+                            <td>{{item.created_at}}</td>
                         </tr>
                     </tbody>
                 </table>
