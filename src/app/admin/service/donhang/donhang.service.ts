@@ -25,6 +25,13 @@ export class DonhangService {
   putdonhang(id: number, request: any):Observable<any> {
 		return this.http.post(`${this.baseURL}/QLDonhang/edit/${id}`, request)
 	}
-
-	 
+  refuseDonHang(id: number, request: any):Observable<any> {
+		return this.http.post(`${this.baseURL}/QLDonhang/refuse/${id}`, request)
+  }
+  cancelDonHang(id: number, request: any):Observable<any> {
+		return this.http.post(`${this.baseURL}/QLDonhang/cancel/${id}`, request)
+  }
+  updateStatus(id: number, request: any):Observable<any> {
+		return this.http.post(`${this.baseURL}/QLDonhang/updateStatus/${id}`, request)
+  }
 }

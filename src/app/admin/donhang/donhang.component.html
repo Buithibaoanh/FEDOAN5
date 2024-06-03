@@ -16,7 +16,6 @@
                             <th>Số Điện Thoại</th>
                             <th>Ngày Đặt</th>
                             <th>Trạng thái</th>
-                         
                             <th>Chi tiết đơn hàng</th>
                             <th>Xác nhận đơn hàng</th>
                         </tr>
@@ -26,17 +25,30 @@
                             <td>{{item.TenKhachHang}}</td>
                             <td>{{item.DiaChi}}</td>
                             <td>{{item.SoDienThoai}}</td>
-                            <td>{{item.NgayDat| date:'dd-MM-YYYY HH:mm:ss '}}</td>
+                            <td>{{item.NgayDat| date:'dd-MM-YYYY'}}</td>
                             
-                            <td><span [ngClass]="{'bg-danger': item.TrangThaiText === 'Chờ xác nhận', 'bg-success': item.TrangThaiText === 'Đã xác nhận'}" style="border-radius: 0.35rem; padding: 0.25rem 0.4rem;color: #fff;">{{item.TrangThaiText}}</span></td>
+                            <td>
+                                <span [ngClass]="{
+                                    'bg-danger': item.TrangThaiText === 'Chờ xác nhận', 
+                                    'bg-success': item.TrangThaiText === 'Đã xác nhận',
+                                    'bg-primary': item.TrangThaiText === 'Chờ xử lý',
+                                    'bg-info': item.TrangThaiText === 'Giao thành công',
+                                    'bg-warning': item.TrangThaiText === 'Từ chối',
+                                    'bg-secondary': item.TrangThaiText === 'Hủy'
+                                }" style="border-radius: 0.35rem; padding: 0.25rem 0.4rem; color: #fff;">
+                                    {{item.TrangThaiText}}
+                                </span>
+                            </td>
                             <td><button (click)="viewChitietDH(item.MaDonHang)" style="background-color: #6777ef;border-radius: 0.35rem; padding: 0.25rem 0.4rem;color: #fff;">Xem chi tiết</button></td>
                             <td class="table__data-td">
-                                <button class="btn btn-primary" style="color: #fff;
-                                background-color: #4e73df;
-                                border-color: #4e73df;"  (click) ="updateDonHang(item.MaDonHang)" >
-                                    Xác nhận
-                                </button>
-                                
+                                <select class="form-select" (change)="onStatusChange($event, item.MaDonHang)" 
+                                        *ngIf="item.TrangThaiText !== 'Từ chối' && item.TrangThaiText !== 'Hủy'">
+                                    <option value="" disabled selected>Chọn trạng thái</option>
+                                    <option value="refuse">Từ chối</option>
+                                    <option value="approve">Duyệt</option>
+                                    <option value="delivered">Giao hàng thành công</option>
+                                    <option value="cancel">Hủy đơn</option>
+                                </select>
                             </td>
                             
                         </tr>

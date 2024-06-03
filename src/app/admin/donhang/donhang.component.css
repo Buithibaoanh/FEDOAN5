@@ -1,1 +1,17 @@
 @import url(.../../../../../assets/css/public-admin.css);
+
+.bg-primary {
+    background-color: #007bff; /* Blue */
+}
+
+.bg-info {
+    background-color: #17a2b8; /* Teal */
+}
+
+.bg-warning {
+    background-color: #ffc107; /* Yellow */
+}
+
+.bg-secondary {
+    background-color: #6c757d; /* Grey */
+}
