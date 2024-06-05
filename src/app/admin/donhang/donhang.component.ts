@@ -98,13 +98,16 @@ export class DonhangComponent {
           case 'cancel':
             this.cancelDonHang(maDonHang);
             break;
+          case 'deliver':
+            this.deliverDonHang(maDonHang);
+            break;
           default:
             break;
         }
     }
 
     refuseDonHang(maDonHang: number): void {
-        const body = { TrangThai: 3 };
+        const body = { TrangThai: 2 };
         let id = maDonHang;
         this.donhangService.refuseDonHang(id, body).subscribe(
           (res: HttpResponse<any>) => {
@@ -136,7 +139,7 @@ export class DonhangComponent {
     
 
     approveDonHang(maDonHang: number) {
-        const body = { TrangThai: 1 };
+        const body = { TrangThai: 3 };
         let id = maDonHang;
         this.donhangService.updateStatus(id, body).subscribe(
           (res: HttpResponse<any>) => {
@@ -151,7 +154,7 @@ export class DonhangComponent {
     }
 
     deliverDonHang(maDonHang: number) {
-        const body = { TrangThai: 2 };
+        const body = { TrangThai: 1 };
         let id = maDonHang;
         this.donhangService.updateStatus(id, body).subscribe(
           (res: HttpResponse<any>) => {
