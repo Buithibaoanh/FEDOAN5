@@ -31,9 +31,8 @@
                                 <span [ngClass]="{
                                     'bg-danger': item.TrangThaiText === 'Chờ xác nhận', 
                                     'bg-success': item.TrangThaiText === 'Đã xác nhận',
-                                    'bg-primary': item.TrangThaiText === 'Chờ xử lý',
+                                    'bg-primary': item.TrangThaiText === 'Đang giao hàng',
                                     'bg-info': item.TrangThaiText === 'Giao thành công',
-                                    'bg-warning': item.TrangThaiText === 'Từ chối',
                                     'bg-secondary': item.TrangThaiText === 'Đã hoàn hàng'
                                 }" style="border-radius: 0.35rem; padding: 0.25rem 0.4rem; color: #fff;">
                                     {{item.TrangThaiText}}
@@ -44,9 +43,9 @@
                                 <select class="form-select" (change)="onStatusChange($event, item.MaDonHang)" 
                                         *ngIf="item.TrangThaiText !== 'Từ chối' && item.TrangThaiText !== 'Hủy'">
                                     <option value="" disabled selected>Chọn trạng thái</option>
-                                    <option value="refuse">Từ chối</option>
-                                    <option value="approve">Duyệt</option>
-                                    <option value="updateDonHang">Giao hàng thành công</option>
+                                    <option value="deliver">Xác nhận</option>
+                                    <option value="updateDonHang">Đang giao hàng</option>
+                                    <option value="approve">Giao hàng thành công</option>
                                     <option value="cancel">Đã hoàn hàng</option>
                                 </select>
                             </td>
