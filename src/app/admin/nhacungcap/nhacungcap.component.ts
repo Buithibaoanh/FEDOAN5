@@ -14,7 +14,7 @@ export class NhacungcapComponent {
     modalType: 'create' | 'update' = 'create';
     TenNhaCungCap: any;
     DiaChi: any;
-    SodienThoai: any;
+    SoDienThoai: any;
     NhaCCByIdData: any = [];
     keyword: any;
     p: number = 1;
@@ -69,7 +69,7 @@ export class NhacungcapComponent {
         let body = {
             TenNCC: this.TenNhaCungCap,
             DiaChi: this.DiaChi,
-            SĐT: this.SodienThoai
+            SĐT: this.SoDienThoai
 
         }
 
@@ -81,25 +81,14 @@ export class NhacungcapComponent {
     }
 
     updateNhaCungCap(){
-        let body = {
-            TenLoai : this.NhaCCByIdData.TenNhaCungCap
-        } 
-        var id = this.NhaCCByIdData.SodienThoai;
-        console.log(id);
-        
-        this.nhacungcapService.putQLNhaCC(id, body).subscribe(res => {
-            this.getData();
-        });       
-    }
-    updateLoaiSp(){
         
       let body = {
-          TenNhaCungCap : this.NhaCCByIdData.TenSanPham,
-          DiaChi : this.NhaCCByIdData.MaLoai,
-          SodienThoai : this.NhaCCByIdData.Anh,
+          TenNhaCungCap : this.NhaCCByIdData.TenNhaCungCap,
+          DiaChi : this.NhaCCByIdData.DiaChi,
+          SoDienThoai : this.NhaCCByIdData.SoDienThoai,
           
       }         
-      var id = this.NhaCCByIdData.SodienThoai;
+      var id = this.NhaCCByIdData.MaNhaCungCap;
       this.nhacungcapService.putQLNhaCC(id, body).subscribe(res => {
           console.log(res);
           
@@ -110,6 +99,7 @@ export class NhacungcapComponent {
 
     deleteLoaiSp(Id: number){
         this.nhacungcapService.deleteQLNhaCC(Id).subscribe(res => {
+            alert("Xóa thành công");
             this.getData();
             
         })

@@ -29,10 +29,10 @@
                             <td>{{ item.MaNhaCungCap }}</td>
                             <td>{{ item.TenNhaCungCap }}</td>
                             <td>{{ item.DiaChi }}</td>
-                            <td>{{ item.SodienThoai }}</td>
+                            <td>{{ item.SoDienThoai }}</td>
                             <td class="table__data-td">
-                                <button class="edit__btn"  (click) ="editModalDepartment(item.MaLoai)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-edit fas fa-pen"></i></button>
-                                <button class="delete__btn" (click) ="deleteLoaiSp(item.MaLoai)" ><i class="table__icon table__icon-delete fas fa-trash"></i></button>
+                                <button class="edit__btn"  (click) ="editModalDepartment(item.MaNhaCungCap)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-edit fas fa-pen"></i></button>
+                                <button class="delete__btn" (click) ="deleteLoaiSp(item.MaNhaCungCap)" ><i class="table__icon table__icon-delete fas fa-trash"></i></button>
                             </td>
                         </tr>
                         
@@ -56,48 +56,37 @@
                 <i class="fas fa-times"></i>
             </div>
             <!-- your-component.component.html -->
-        
-
         </div>
 
         <div class="manager__container modal__body">
             <form class="form" action="#">
                 <ng-container *ngIf="modalType === 'create' ; else updateContent">
                     <div class="form__item">
-                        <label class="form__label">Tên sản phẩm</label>
-                        <input type="text" class="form__input form__input-name" name="TenNhaCungCap" [(ngModel)]="TenNhaCungCap" placeholder="Nhập tên sản phẩm">
+                        <label class="form__label">Tên nhà cung cấp</label>
+                        <input type="text" class="form__input form__input-name" name="TenNhaCungCap" [(ngModel)]="TenNhaCungCap" placeholder="Nhập tên nhà cung cấp">
                     </div>
-                    
-                    
                     <div class="form__item">
                         <label class="form__label">Địa chỉ </label>
-                        <input type="text" class="form__input form__input-name" name="DiaChi" [(ngModel)]="DiaChi" placeholder="Nhập giá bán">
+                        <input type="text" class="form__input form__input-name" name="DiaChi" [(ngModel)]="DiaChi" placeholder="Nhập địa chỉ">
                     </div>
                     <div class="form__item">
                         <label class="form__label">Số điện thoại</label>
-                        <input type="text" class="form__input form__input-name" name="SodienThoai" [(ngModel)]="SodienThoai" placeholder="Nhập giá bán">
+                        <input type="text" class="form__input form__input-name" name="SodienThoai" [(ngModel)]="SoDienThoai" placeholder="Nhập số điện thoại">
                         
                     </div>
                 </ng-container>
                 <ng-template #updateContent>
                     <div class="form__item">
-                        <label class="form__label">Tên sản phẩm</label>
-                        <input type="text" class="form__input form__input-name" name="TenNhaCungCap" [(ngModel)]="NhaCCByIdData.TenNhaCungCap" placeholder="Nhập tên sản phẩm">
+                        <label class="form__label">Tên nhà cung cấp</label>
+                        <input type="text" class="form__input form__input-name" name="TenNhaCungCap" [(ngModel)]="NhaCCByIdData.TenNhaCungCap" placeholder="Nhập tên nhà cung cấp">
                     </div>
-                    <!-- <div class="form__item">
-                        <label class="form__label">Mã Loại </label>                        <
-                        <select class="form__input " name="MaLoai" [(ngModel)]="SanPhamGetByIdData.MaLoai" placeholder="Chọn loại sản phẩm">
-                            <option selected disabled >-- Tên loại --</option>
-                            <option *ngFor="let item of dataDropdown" [value]="item.MaLoai">{{ item.TenLoai }}</option>                       
-                        </select>
-                    </div> -->
                     <div class="form__item">
                         <label class="form__label">Địa chỉ</label>
-                        <input type="text" class="form__input form__input-name" name="DiaChi" [(ngModel)]="NhaCCByIdData.DiaChi" placeholder="">
+                        <input type="text" class="form__input form__input-name" name="DiaChi" [(ngModel)]="NhaCCByIdData.DiaChi" placeholder="Nhập địa chỉ">
                     </div>
                     <div class="form__item">
                         <label class="form__label">Số điện thoại</label>
-                        <input type="text" class="form__input form__input-name" name="SoDienThoai" [(ngModel)]="NhaCCByIdData.SodienThoai" placeholder="">
+                        <input type="text" class="form__input form__input-name" name="SoDienThoai" [(ngModel)]="NhaCCByIdData.SoDienThoai" placeholder="Nhập số điện thoại">
                     </div>
                     
                 </ng-template>
