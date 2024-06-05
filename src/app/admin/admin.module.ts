@@ -21,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { KhoComponent } from './kho/kho.component';
 import { DetailKhoComponent } from './detail-kho/detail-kho.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NhacungcapComponent } from './nhacungcap/nhacungcap.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ThongkeComponent,
     ThongketheothangComponent,
     KhoComponent,
-    DetailKhoComponent
+    DetailKhoComponent,
+    NhacungcapComponent
   ],
   imports: [
     CommonModule,

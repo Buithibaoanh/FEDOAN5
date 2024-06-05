@@ -17,7 +17,7 @@
                             <th>Ngày Đặt</th>
                             <th>Trạng thái</th>
                             <th>Chi tiết đơn hàng</th>
-                            <th>Xác nhận đơn hàng</th>
+                            <th>Chuyển trạng thái </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,7 +34,7 @@
                                     'bg-primary': item.TrangThaiText === 'Chờ xử lý',
                                     'bg-info': item.TrangThaiText === 'Giao thành công',
                                     'bg-warning': item.TrangThaiText === 'Từ chối',
-                                    'bg-secondary': item.TrangThaiText === 'Hủy'
+                                    'bg-secondary': item.TrangThaiText === 'Đã hoàn hàng'
                                 }" style="border-radius: 0.35rem; padding: 0.25rem 0.4rem; color: #fff;">
                                     {{item.TrangThaiText}}
                                 </span>
@@ -47,7 +47,7 @@
                                     <option value="refuse">Từ chối</option>
                                     <option value="approve">Duyệt</option>
                                     <option value="delivered">Giao hàng thành công</option>
-                                    <option value="cancel">Hủy đơn</option>
+                                    <option value="cancel">Đã hoàn hàng</option>
                                 </select>
                             </td>
                             

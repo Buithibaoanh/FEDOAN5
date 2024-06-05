@@ -9,6 +9,7 @@ import { ThongkeComponent } from './thongke/thongke.component';
 import { ThongketheothangComponent } from './thongketheothang/thongketheothang.component';
 import { KhoComponent } from './kho/kho.component';
 import { DetailKhoComponent } from './detail-kho/detail-kho.component';
+import { NhacungcapComponent } from './nhacungcap/nhacungcap.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'thongketheothang',
     component: ThongketheothangComponent
+  },
+  {
+    path: 'nhacungcap',
+    component: NhacungcapComponent
   }
 ];
 

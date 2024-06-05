@@ -42,7 +42,7 @@
             <button (click)="downloadPDF()" class="btn btn-primary" style="margin-left: 50px; margin-top: 50px;">Tải xuống đơn hàng</button>
             <div class="invoice " id="inpdf" style="margin-bottom: 100px;">
               <div class="invoice-header">
-                <h1>Đơn hàng đã được xác nhận đặt</h1>
+                <h1>Hóa đơn bán </h1>
                 <hr>
               </div>
               <div class="invoice-info">
@@ -64,16 +64,16 @@
                       <label for="shippingAddress">Địa chỉ giao hàng: {{ Data[0].DiaChi}}</label>
                       <!-- <p>{{order.shipping_address}}</p> -->
                     </div>
-                    <!-- <div class="order-info-item">
-                      <label for="paymentmethod">Phương thức thanh toán:</label>
-                    </div> -->
+                    <div class="order-info-item">
+                      <label for="paymentmethod">Phương thức thanh toán:Tiền mặt</label>
+                    </div>
                   </div>
           
                 </div>
                 <div class="invoice-details">
                   <h2>THÔNG TIN HÓA ĐƠN</h2>
                   <!-- <p>Ngày bán: {{order.order_date | date:'short'}}</p> -->
-                  <p>Tên người bán: ShopDE</p>
+                  <p>Tên người bán: Cửa hàng điện máy Tiến Sáng</p>
                 </div>
               </div>
               <h2 style="color: #707275;">CHI TIẾT HÓA ĐƠN</h2>
@@ -94,8 +94,8 @@
                 </tbody>
               </table>
               <div class="total">
-                <h3>Tổng số lượng sản phẩm: {{ tinhTongSoLuong() }} sản phẩm</h3>
-                <h3>Tổng giá trị đơn hàng: {{ tinhTongGiaTriDonHang() | currency:'VND':'symbol':'1.0-0' }}</h3>
+                <div >Tổng số lượng sản phẩm: <span>{{ tinhTongSoLuong() }} sản phẩm</span></div>
+                <div>Tổng giá trị đơn hàng: <span>{{ tinhTongGiaTriDonHang() | currency:'VND':'symbol':'1.0-0' }}</span></div>
               </div>
               <div class="total">
               </div>
