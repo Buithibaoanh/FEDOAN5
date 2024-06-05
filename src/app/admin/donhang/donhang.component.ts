@@ -62,16 +62,18 @@ export class DonhangComponent {
     }
     updateDonHang(Id: number)
     {
-        let body = 
-        {
-            TrangThai : 1
-        } 
-    
-        this.donhangService.putdonhang(Id, body).subscribe(res => 
-        {
+
+        const body = { TrangThai: 2 };
+        let id = Id;
+        this.donhangService.putdonhang(id, body).subscribe(
+          (res: HttpResponse<any>) => {
+            alert('Cập nhật trạng thái thành công');
             this.getData();
-            window.location.href = "/admin/sanpham";
-        });       
+          },
+          (error) => {
+            alert(`${error.error.message}`);
+          }
+        );
     }
 
 
@@ -90,8 +92,8 @@ export class DonhangComponent {
           case 'approve':
             this.approveDonHang(maDonHang);
             break;
-          case 'delivered':
-            this.deliverDonHang(maDonHang);
+          case 'updateDonHang':
+            this.updateDonHang(maDonHang);
             break;
           case 'cancel':
             this.cancelDonHang(maDonHang);

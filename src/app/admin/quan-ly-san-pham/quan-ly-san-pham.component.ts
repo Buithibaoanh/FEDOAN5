@@ -39,7 +39,14 @@ export class QuanLySanPhamComponent {
     
     p: number = 1;
 
+    onFileSelected(event: any): void {
+        const file = event.target.files[0];
     
+        if (file) {
+          // Lấy phần tên tệp mà không bao gồm "C:\fakepath\"
+          this.Anh = file.name;
+        }
+      }
     ngOnInit(): void {
         this.getData();
         this.getDropdownKho();

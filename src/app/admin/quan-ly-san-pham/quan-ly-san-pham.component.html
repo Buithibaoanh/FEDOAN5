@@ -91,7 +91,7 @@
                     </div>
                     <div class="form__item">
                         <label class="form__label">Ảnh</label>
-                        <input type="file" class="form__input form__input-name" name="Anh" [(ngModel)]="Anh" placeholder="Tải ảnh lên">
+                        <input type="file" class="form__input form__input-name" name="Anh" [(ngModel)]="Anh" (change)="onFileSelected($event)" placeholder="Tải ảnh lên" >
                     </div>
                     <div class="form__item">
                         <label class="form__label">Số lượng</label>
