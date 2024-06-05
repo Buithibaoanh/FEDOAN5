@@ -23,7 +23,7 @@
             <b>Tất cả Tivi</b>
         </div> 
         <div class="row" >
-            <div class="col-lg-3 col-md-4 col-6" *ngFor = "let item of TrangChuDataApi">
+            <div class="col-lg-3 col-md-4 col-6" *ngFor = "let item of TrangChuDataApi | paginate: { itemsPerPage: 8, currentPage: p }" >
                 <div class="product-item">
                     <button href="#" (click)="viewDetail(item.MaSanPham)" class="Home-product-item" style="border: none; outline: none;text-align: left;">
                         <img src="../../../assets/user_UI/IMG/{{item.Anh}}" class="Home-product-item__img">
@@ -66,13 +66,19 @@
                         </div> -->
                     </button>
                 </div>
-            </div>             
+                
+            </div>
+            
+                       
         </div>
+        <div style="font-size: 15px; margin-left: 70%; margin-top: 20px;"> <pagination-controls (pageChange)="p = $event"></pagination-controls> </div>
+        
+
         <div class="Container__title">
             <b>tivi mới về</b>
         </div>
         <div class="Container__product row">
-            <div class="col-lg-3 col-md-4 col-6" *ngFor = "let spmv of TrangChuGetspmvData">
+            <div class="col-lg-3 col-md-4 col-6" *ngFor = "let spmv of TrangChuGetspmvData | paginate: { itemsPerPage: 8, currentPage: p }">
                 <div class="product-item">
                     <button href="#" (click)="viewDetail(spmv.MaSanPham)" class="Home-product-item" style="border: none; outline: none;text-align: left;">
                         <img src="../../../assets/user_UI/IMG/{{spmv.Anh}}" class="Home-product-item__img">
@@ -115,6 +121,7 @@
             </div>
             
         </div>
+        <div style="font-size: 15px; margin-left: 70%; margin-top: 20px;"> <pagination-controls (pageChange)="p = $event"></pagination-controls> </div>
         <!-- <div class="Container__title">
             <b>tivi lg</b>
         </div>

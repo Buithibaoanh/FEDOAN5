@@ -7,13 +7,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./trangchu.component.css']
 })
 export class TrangchuComponent {
+  data = Array.from({length: 100}, (_, k) => `Item ${k + 1}`);
+  p: number = 1;
   constructor(private trangchuService : TrangchuService, private router: Router) {}
     TrangChuDataApi: any = [];
-    sl: number = 8;
+    sl: number = 1000;
     TrangChuGetByIdData: any = [];
     TrangChuLSPApi: any = [];
     TrangChuGetspmvData:any = [];
     keyword: any;
+
+    
     ngOnInit(): void {
         this.getData(this.sl);
         this.getspmv(this.sl);
