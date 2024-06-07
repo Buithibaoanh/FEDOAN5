@@ -117,7 +117,7 @@ export class QuanLySanPhamComponent {
     getById(Id: number ){
         this.sanphamService.getById(Id).subscribe(res => {
             this.SanPhamGetByIdData = res[0];
-            
+            this.Anh = this.SanPhamGetByIdData.Anh;
         })
     }
 
@@ -196,7 +196,7 @@ export class QuanLySanPhamComponent {
         let body = {
             TenSanPham: this.SanPhamGetByIdData.TenSanPham,
             MaLoai: this.SanPhamGetByIdData.MaLoai,
-            Anh: this.SanPhamGetByIdData.Anh,
+            Anh: this.Anh,
             SoLuong: this.SanPhamGetByIdData.SoLuong,
             Gia: this.SanPhamGetByIdData.Gia,
             Mota: this.SanPhamGetByIdData.Mota,

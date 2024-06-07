@@ -29,6 +29,7 @@
                             <th>Tên Loại</th>
                             <th>Tên sản phẩm</th>
                             <th>Ảnh</th>
+                           
                             <th>Số lượng</th>
                             <th>Giá bán</th>
                             <th>Đã bán</th>
@@ -42,6 +43,7 @@
                             <td>{{ item.TenLoai }}</td>
                             <td>{{ item.TenSanPham }}</td>
                             <td> <img src="../assets/img/{{item.Anh}}" alt="" style="width: 100px; height: auto;"></td>
+                            
                             <td>{{ item.SoLuong}}</td>
                             <td>{{ item.Gia|currency:'VND':'symbol':'1.0-0'}}</td>
                             <td>{{ item.TongSoLuongDaBan }}</td>
@@ -93,6 +95,7 @@
                     <div class="form__item">
                         <label class="form__label">Ảnh</label>
                         <input type="file" class="form__input form__input-name" name="Anh" (change)="onFileSelected($event)" placeholder="Tải ảnh lên">
+                        <img *ngIf="this.Anh" style="width: 100px;height: 100px;" src="../assets/img/{{this.Anh}}" alt=""/>
                     </div>
                     <div class="form__item">
                         <label class="form__label">Số lượng</label>
@@ -149,6 +152,10 @@
                         <input type="file" class="form__input form__input-name" name="Anh" (change)="onFileSelected($event)" placeholder="Tải ảnh lên">
                         
                     </div>
+                    <div class="form-group" style="margin-left: 165px">
+                        <img src="../assets/img/{{this.Anh}}" alt="Product Image" class="product-preview" >
+                    </div>
+                                        
                     <div class="form__item">
                         <label class="form__label">Số lượng</label>
                         <input type="text" class="form__input form__input-name" name="soluong" [(ngModel)]="SanPhamGetByIdData.SoLuong" placeholder="Nhập số lượng">
@@ -159,7 +166,7 @@
                     </div>
                     <div class="form__item">
                         <label class="form__label">Mô tả</label>
-                        <ckeditor [(ngModel)]="SanPhamGetByIdData.Mota" [editor]="Editor" [config]="config" name="Mota"></ckeditor>
+                        <ckeditor [(ngModel)]="SanPhamGetByIdData.Mota" [editor]="Editor" [config]="config" name="Mota" style="width: 77% !important;height: 100px;"></ckeditor>
                     </div>
                     <!-- Thêm các trường thông số kỹ thuật -->
                     <div class="form__item">
