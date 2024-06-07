@@ -42,12 +42,19 @@
                             <td><button (click)="viewChitietDH(item.MaDonHang)" style="background-color: #6777ef;border-radius: 0.35rem; padding: 0.25rem 0.4rem;color: #fff;">Xem chi tiết</button></td>
                             <td class="table__data-td">
                                 <select class="form-select" (change)="onStatusChange($event, item.MaDonHang)" 
+                                        [disabled]="item.TrangThaiText === 'Đã hoàn hàng'" 
                                         *ngIf="item.TrangThaiText !== 'Từ chối' && item.TrangThaiText !== 'Hủy'">
                                     <option value="" disabled selected>Chọn trạng thái</option>
-                                    <option value="deliver">Xác nhận</option>
-                                    <option value="updateDonHang">Đang giao hàng</option>
-                                    <option value="approve">Giao hàng thành công</option>
-                                    <option value="cancel">Đã hoàn hàng</option>
+                                    <ng-container *ngIf="item.TrangThaiText === 'Đang giao hàng'; else defaultOptions">
+                                        <option value="approve">Giao hàng thành công</option>
+                                        <option value="cancel">Đã hoàn hàng</option>
+                                    </ng-container>
+                                    <ng-template #defaultOptions>
+                                        <option value="deliver">Xác nhận</option>
+                                        <option value="updateDonHang">Đang giao hàng</option>
+                                        <option value="approve">Giao hàng thành công</option>
+                                        <option value="cancel">Đã hoàn hàng</option>
+                                    </ng-template>
                                 </select>
                             </td>
                             
