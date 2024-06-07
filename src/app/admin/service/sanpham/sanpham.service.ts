@@ -31,7 +31,7 @@ export class SanphamService {
 	}
 
 	putLoaiSp(id: number, request: any):Observable<any> {
-		return this.http.put(`${this.baseURL}/QLSanpham/edit/${id}`, request)
+		return this.http.post(`${this.baseURL}/QLSanpham/edit/${id}`, request)
 	}
 
 	deleteLoaiSp(id: number): Observable<any> {

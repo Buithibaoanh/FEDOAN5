@@ -10,7 +10,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            
+                            <th>STT</th>
                             <th>Tên Khách hàng</th>
                             <th>Địa Chỉ</th>
                             <th>Số Điện Thoại</th>
@@ -21,7 +21,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor = "let item of DonhangDataApi | paginate: { itemsPerPage: 10, currentPage: p}"  >
+                        <tr *ngFor = "let item of DonhangDataApi |paginate: { itemsPerPage: 10, currentPage: p }; let i = index" >
+                            <td>{{ i + 1 + (p - 1) * 10 }}</td>
                             <td>{{item.TenKhachHang}}</td>
                             <td>{{item.DiaChi}}</td>
                             <td>{{item.SoDienThoai}}</td>
@@ -29,12 +30,12 @@
                             
                             <td>
                                 <span [ngClass]="{
-                                    'bg-danger': item.TrangThaiText === 'Chờ xác nhận', 
+                                    'bg-danger': item.TrangThaiText === 'Chờ xử lý', 
                                     'bg-success': item.TrangThaiText === 'Đã xác nhận',
                                     'bg-primary': item.TrangThaiText === 'Đang giao hàng',
                                     'bg-info': item.TrangThaiText === 'Giao thành công',
                                     'bg-secondary': item.TrangThaiText === 'Đã hoàn hàng'
-                                }" style="border-radius: 0.35rem; padding: 0.25rem 0.4rem; color: #fff;">
+                                }" style="white-space: nowrap; display: inline-block; width: auto;margin-right: auto;border-radius: 0.35rem; padding: 0.30rem 0.12rem; color: #fff;">
                                     {{item.TrangThaiText}}
                                 </span>
                             </td>

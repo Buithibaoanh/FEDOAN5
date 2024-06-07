@@ -19,7 +19,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Mã loại</th>
+                            <th>STT</th>
                             <th>Tên Loại</th>
                             <th>Ngày Tạo</th>
                             <th>Ngày cập nhập</th>
@@ -27,8 +27,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor = "let item of LoaiSanPhamDataApi | paginate: { itemsPerPage: 10, currentPage: p }">
-                            <td>{{ item.MaLoai }}</td>
+                        <tr *ngFor = "let item of LoaiSanPhamDataApi | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                            <td>{{ i + 1 + (p - 1) * 10 }}</td>
                             <td>{{ item.TenLoai }}</td>
                             <td>{{ item.created_at }}</td>
                             <td>{{ item.updated_at }}</td>

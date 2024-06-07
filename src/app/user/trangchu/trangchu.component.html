@@ -78,7 +78,7 @@
             <b>tivi mới về</b>
         </div>
         <div class="Container__product row">
-            <div class="col-lg-3 col-md-4 col-6" *ngFor = "let spmv of TrangChuGetspmvData | paginate: { itemsPerPage: 8, currentPage: p }">
+            <div class="col-lg-3 col-md-4 col-6" *ngFor = "let spmv of TrangChuGetspmvData | paginate: { itemsPerPage:12, currentPage: p }">
                 <div class="product-item">
                     <button href="#" (click)="viewDetail(spmv.MaSanPham)" class="Home-product-item" style="border: none; outline: none;text-align: left;">
                         <img src="../../../assets/user_UI/IMG/{{spmv.Anh}}" class="Home-product-item__img">

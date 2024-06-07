@@ -22,6 +22,8 @@ import { KhoComponent } from './kho/kho.component';
 import { DetailKhoComponent } from './detail-kho/detail-kho.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { NhacungcapComponent } from './nhacungcap/nhacungcap.component';
+import { KhachhangComponent } from './khachhang/khachhang.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { NhacungcapComponent } from './nhacungcap/nhacungcap.component';
     ThongketheothangComponent,
     KhoComponent,
     DetailKhoComponent,
-    NhacungcapComponent
+    NhacungcapComponent,
+    KhachhangComponent,
+    
   ],
   imports: [
     CommonModule,

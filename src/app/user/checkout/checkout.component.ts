@@ -29,7 +29,28 @@ export class CheckoutComponent implements OnInit{
         this.total = this.cartService.getTotalPrice();
     }
 
-    post(){                
+    post(){
+        // if (this.username == null) {
+        console.log(this.username)  ;   
+        if (this.username == ''){
+            alert("Vui lòng nhập tên");
+            return;
+        } 
+        
+        if (this.number == ''){
+            alert("Vui lòng nhập số điện thoại");
+            return;
+        }  
+
+        if (this.email == ''){
+            alert("Vui lòng nhập Email");
+            return;
+        }  
+
+        if (this.address == ''){
+            alert("Vui lòng nhập địa chỉ");
+            return;
+        }  
         let body = {
             Hoten: this.username,
             Sdt: this.number,

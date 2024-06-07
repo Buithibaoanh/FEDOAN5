@@ -17,7 +17,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Mã Nhà CC</th>
+                            <th>STT</th>
+                           
                             <th>Tên Nhà cung cấp</th>
                             <th>Địa chỉ</th>
                             <th>Số điện thoại</th>
@@ -25,14 +26,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor = "let item of NhacungcapData | paginate: { itemsPerPage: 10, currentPage: p }">
-                            <td>{{ item.MaNhaCungCap }}</td>
+                        <tr *ngFor = "let item of NhacungcapData | paginate: { itemsPerPage: 10, currentPage: p }; let i = index" >
+                            <td>{{ i + 1 + (p - 1) * 10 }}</td>
+                            
                             <td>{{ item.TenNhaCungCap }}</td>
                             <td>{{ item.DiaChi }}</td>
                             <td>{{ item.SoDienThoai }}</td>
                             <td class="table__data-td">
                                 <button class="edit__btn"  (click) ="editModalDepartment(item.MaNhaCungCap)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-edit fas fa-pen"></i></button>
-                                <button class="delete__btn" (click) ="deleteLoaiSp(item.MaNhaCungCap)" ><i class="table__icon table__icon-delete fas fa-trash"></i></button>
+                                <button class="delete__btn" (click) ="deleteLoaiSp(item.MaNhaCungCap)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-delete fas fa-trash"></i></button>
                             </td>
                         </tr>
                         
