@@ -1,0 +1,41 @@
+<div  class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Thông tin hóa đơn nhập</h6>
+        
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th>STT</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Giá bán</th>
+                            <th>Thành Tiền</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="text-align: center;" *ngFor = "let item of Data |paginate: { itemsPerPage: 10, currentPage: p }; let i = index" >
+                            <td>{{ i + 1 + (p - 1) * 10 }}</td>
+                            <td>{{item.TenSanPham}}</td>
+                            <td>{{item.SoLuong}}</td>
+                            <td>{{item.DonGia|currency:'VND':'symbol':'1.0-0' }}</td>
+                            
+                            <td>{{item.ThanhTien|currency:'VND':'symbol':'1.0-0'}}</td> 
+                            
+                            
+                       </tr>
+
+                        
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+    
+</div>

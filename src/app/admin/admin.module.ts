@@ -26,6 +26,8 @@ import { KhachhangComponent } from './khachhang/khachhang.component';
 import { KhachHangOderComponent } from './khach-hang-oder/khach-hang-oder.component';
 import { KhachHangOderDetailComponent } from './khach-hang-oder-detail/khach-hang-oder-detail.component';
 import { HoadonnhapComponent } from './hoadonnhap/hoadonnhap.component';
+import { ChitiethoadonnhapComponent } from './chitiethoadonnhap/chitiethoadonnhap.component'; // Ensure this path is correct
+
 
 
 @NgModule({
@@ -49,6 +51,7 @@ import { HoadonnhapComponent } from './hoadonnhap/hoadonnhap.component';
     KhachHangOderComponent,
     KhachHangOderDetailComponent,
     HoadonnhapComponent,
+    ChitiethoadonnhapComponent,
     
   ],
   imports: [

@@ -14,6 +14,7 @@ export class HoadonnhapComponent {
   constructor(private hoadonnhapService : HoadonnhapService ,private router: Router,private SanphamService: SanphamService,private NhacungcapService: NhacungcapService) {}
   modalType: 'create' | 'update' = 'create'; // Khai báo và khởi tạo modalType
   hoadonnhap: any[] = [];
+  HoaDonNhapGetByIdData:any[] = [];
   MaSanPham: any;
   SoLuong: number = 0;
   Gia: number = 0;
@@ -71,6 +72,7 @@ submitForm() {
     this.closeModal();
 }
 
+
   Them() {
     const data = {
       MaSanPham: this.MaSanPham,
@@ -89,4 +91,15 @@ submitForm() {
       }
     );
   }
+  getByhoadonnhapId(Id: number )
+    {
+      this.hoadonnhapService.getByhoadonnhapId(Id).subscribe(res => {
+          this.HoaDonNhapGetByIdData = res[0];
+          
+      })
+    }
+    viewChitietDH(MaHoaDonNhap: number ) {       
+      this.router.navigate(['/admin/chitiethoadonnhap', MaHoaDonNhap]);
+    }  
+
 }

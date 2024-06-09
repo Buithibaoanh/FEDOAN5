@@ -9,24 +9,38 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
+                        <tr style="text-align: center;">
                             <th>STT</th>
-                            <th>Tên Khách hàng</th>
-                            <th>Địa Chỉ</th>
-                            <th>Số Điện Thoại</th>
-                            <th>Ngày Đặt</th>
-                            <th style="text-align: center;">Trạng thái</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Giá bán</th>
+                            <th>Trạng thái</th>
+                            <th>Ngày đặt</th>
+                            <!-- <th style="text-align: center;">Trạng thái</th>
                             <th style="text-align: center;">Tổng tiền</th>
-                            <th>Chi tiết đơn hàng</th>
+                            <th>Chi tiết đơn hàng</th> -->
                             <!-- <th style="text-align: center;">Chuyển trạng thái </th> -->
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor = "let item of khachhangOder " >
-                            <!-- <td>{{ i + 1 + (p - 1) * 10 }}</td> -->
+                        <tr style="text-align: center;" *ngFor = "let item of khachhangOder |paginate: { itemsPerPage: 10, currentPage: p }; let i = index" >
+                            <td>{{ i + 1 + (p - 1) * 10 }}</td>
                             <td>{{item.TenSanPham}}</td>
-                            <!-- <td>{{item.DiaChi}}</td> -->
-                            <!-- <td>{{item.SoDienThoai}}</td> -->
+                            <td>{{item.SoLuong}}</td>
+                            <td>{{item.GiaBan|currency:'VND':'symbol':'1.0-0' }}</td>
+                            <td>
+                                <span [ngClass]="{
+                                    'bg-danger': item.TrangThaiText === 'Chờ xác nhận', 
+                                    'bg-success': item.TrangThaiText === 'Đã xác nhận',
+                                    'bg-primary': item.TrangThaiText === 'Đang giao hàng',
+                                    'bg-info': item.TrangThaiText === 'Giao thành công',
+                                    'bg-secondary': item.TrangThaiText === 'Đã hoàn hàng'
+                                }" style="white-space: nowrap; display: inline-block;  width: 100%;text-align: center;margin-right: auto;border-radius: 0.35rem; padding: 0.30rem 0.12rem; color: #fff;">
+                                    {{item.TrangThaiText}}
+                                </span>
+                            </td>
+                            <td>{{item.NgayDat| date:'dd-MM-YYYY'}}</td>
+                            
                             <!-- <td>{{item.NgayDat| date:'dd-MM-YYYY'}}</td> -->
    
                        </tr>
@@ -34,7 +48,7 @@
                         
                     </tbody>
                 </table>
-                <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </div>
         </div>
     </div>

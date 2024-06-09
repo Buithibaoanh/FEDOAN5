@@ -11,6 +11,7 @@ export class KhachHangOderComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private khachhangService : KhachhangService){}
   MaDonHang: any;
   khachhangOder: any;
+  p: number = 1;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.MaDonHang  = params['id'];
