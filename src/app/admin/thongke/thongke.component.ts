@@ -31,7 +31,8 @@ export class ThongkeComponent {
         })
 
     }
-    private calculateTotalRevenue(data: any[]): number {
+    private calculateTotalRevenue(data: any[]): number 
+    {
         return data.reduce((total, item) => total + item.TongThanhTien, 0);
       }
     

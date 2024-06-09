@@ -16,7 +16,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color: black;">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -30,11 +30,11 @@
                         <tr *ngFor = "let item of LoaiSanPhamDataApi | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
                             <td>{{ i + 1 + (p - 1) * 10 }}</td>
                             <td>{{ item.TenLoai }}</td>
-                            <td>{{ item.created_at }}</td>
-                            <td>{{ item.updated_at }}</td>
+                            <td>{{ item.created_at| date:'dd-MM-YYYY' }}</td>
+                            <td>{{ item.updated_at| date:'dd-MM-YYYY' }}</td>
                             <td class="table__data-td">
                                 <button class="edit__btn"  (click) ="editModalDepartment(item.MaLoai)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-edit fas fa-pen"></i></button>
-                                <button class="delete__btn" (click) ="deleteLoaiSp(item.MaLoai)" ><i class="table__icon table__icon-delete fas fa-trash"></i></button>
+                                <button class="delete__btn" (click) ="deleteLoaiSp(item.MaLoai)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-delete fas fa-trash"></i></button>
                             </td>
                         </tr>
                         

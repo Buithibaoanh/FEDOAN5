@@ -10,6 +10,9 @@ import { ThongketheothangComponent } from './thongketheothang/thongketheothang.c
 import { KhoComponent } from './kho/kho.component';
 import { DetailKhoComponent } from './detail-kho/detail-kho.component';
 import { NhacungcapComponent } from './nhacungcap/nhacungcap.component';
+import { KhachhangComponent } from './khachhang/khachhang.component';
+import { HoadonnhapComponent } from './hoadonnhap/hoadonnhap.component';
+import { KhachHangOderComponent } from './khach-hang-oder/khach-hang-oder.component';
 
 const routes: Routes = [
   {
@@ -51,7 +54,19 @@ const routes: Routes = [
   {
     path: 'nhacungcap',
     component: NhacungcapComponent
-  }
+  },
+  {
+    path: 'khachhang',
+    component: KhachhangComponent
+  },
+  {
+    path: 'hoadonnhap',
+    component: HoadonnhapComponent
+  },
+  {
+    path: 'khachhangdonhang/:id',
+    component: KhachHangOderComponent
+  },
 ];
 
 @NgModule({

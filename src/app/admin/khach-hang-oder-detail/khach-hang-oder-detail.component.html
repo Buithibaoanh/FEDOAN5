@@ -5,41 +5,10 @@
             <h6 class="m-0 font-weight-bold text-primary">Chi tiết đơn hàng</h6>
         
         </div>
-        <!-- <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            
-                            <th>Ảnh</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Số lượng</th>
-                            <th>Đơn giá</th>
-                            <th>Thành tiền</th>
-                         
-                         
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor = "let item of Data"  >
-                            <td><img src="../assets/img/{{item.Anh}}" alt="" style="width: 100px; height: auto; display: block; margin-left: auto; margin-right: auto;"></td>
-                            <td>{{item.TenSanPham}}</td>
-                            <td>{{item.SoLuong}}</td>
-                            <td>{{item.GiaBan| currency:'VND':'symbol':'1.0-0' }}</td>
-                            <td>{{item.ThanhTien| currency:'VND':'symbol':'1.0-0' }}</td>
-                            
-                                                   
-                            
-                        </tr>
-                    
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div> -->
+        
         
         <main id="main" class="main">
-            <button (click)="downloadPDF()" class="btn btn-primary" style="margin-left: 50px; margin-top: 50px;">Tải xuống đơn hàng</button>
+            <!-- <button (click)="downloadPDF()" class="btn btn-primary" style="margin-left: 50px; margin-top: 50px;">Tải xuống đơn hàng</button> -->
             <div class="invoice " id="inpdf" style="margin-bottom: 100px;">
               <div class="invoice-header">
                 <h1>Hóa đơn bán </h1>
@@ -50,18 +19,18 @@
                   <h2>THÔNG TIN KHÁCH HÀNG</h2>
                   <div class="order-info">
                     <div class="order-info-item">
-                      <label for="customerName">Họ và Tên: {{ Data[0].TenKhachHang}}</label>
+                      <!-- <label for="customerName">Họ và Tên: {{ Data[0].TenKhachHang}}</label> -->
                       <!-- <p>{{order.username}}</p> -->
                     </div>
                     <!-- <div class="order-info-item">
                       <label for="customerAddress">Địa chỉ: {{ Data[0].DiaChi}}</label>
                     </div> -->
                     <div class="order-info-item">
-                      <label for="phone">Số điện thoại: {{ Data[0].SoDienThoai}}</label>
+                      <!-- <label for="phone">Số điện thoại: {{ Data[0].SoDienThoai}}</label> -->
                       <!-- <p>{{order.phone}}</p> -->
                     </div>
                     <div class="order-info-item">
-                      <label for="shippingAddress">Địa chỉ giao hàng: {{ Data[0].DiaChi}}</label>
+                      <!-- <label for="shippingAddress">Địa chỉ giao hàng: {{ Data[0].DiaChi}}</label> -->
                       <!-- <p>{{order.shipping_address}}</p> -->
                     </div>
                     <div class="order-info-item">
@@ -87,17 +56,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor = "let item of Data">
+                  <!-- <tr *ngFor = "let item of Data">
                     <td>{{ item.TenSanPham }}</td>
                     <td>{{ item.SoLuong }}</td>
                     <td>{{ item.GiaBan| currency:'VND':'symbol':'1.0-0'}}</td>
                     <td>{{ item.SoLuong*item.GiaBan | currency:'VND':'symbol':'1.0-0' }}</td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
               <div class="total">
-                <div >Tổng số lượng sản phẩm: <span>{{ tinhTongSoLuong() }} sản phẩm</span></div>
-                <div>Tổng giá trị đơn hàng: <span>{{ tinhTongGiaTriDonHang() | currency:'VND':'symbol':'1.0-0' }}</span></div>
+                <!-- <div >Tổng số lượng sản phẩm: <span>{{ tinhTongSoLuong() }} sản phẩm</span></div>
+                <div>Tổng giá trị đơn hàng: <span>{{ tinhTongGiaTriDonHang() | currency:'VND':'symbol':'1.0-0' }}</span></div> -->
               </div>
               <div class="total">
               </div>

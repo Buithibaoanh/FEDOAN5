@@ -38,3 +38,8 @@
     border: 1px solid #ccc;
     padding: 5px;
 }
+
+.not-allowed {
+    cursor: not-allowed;
+    opacity: 0.5; /* hoặc bất kỳ kiểu dáng khác cho trạng thái không được phép */
+}

@@ -5,7 +5,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Quản lý nhà cung cấp</h6>
             <button class="btn btn--primary" (click) ="showModal('create')">Thêm mới</button>
         </div>
-        <div class="input-group" style="width: 50%; margin-left: 50px; margin-top: 20px;border: 1px solid #e3e6f0">
+        <div class="input-group" style="width: 50%; margin-left: 50px; margin-top: 20px">
             
             <div class="input-group-append" style="background-color: #4e73df;">
                 
@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color: black;">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -22,6 +22,7 @@
                             <th>Tên Nhà cung cấp</th>
                             <th>Địa chỉ</th>
                             <th>Số điện thoại</th>
+                            <th>Nợ cần trả hiện tại</th>
                             <th>Chức năng</th>
                         </tr>
                     </thead>
@@ -32,6 +33,7 @@
                             <td>{{ item.TenNhaCungCap }}</td>
                             <td>{{ item.DiaChi }}</td>
                             <td>{{ item.SoDienThoai }}</td>
+                            <td>{{ item.TongThanhTien ? (item.TongThanhTien | currency:'VND':'symbol':'1.0-0') : '0₫'}}</td>
                             <td class="table__data-td">
                                 <button class="edit__btn"  (click) ="editModalDepartment(item.MaNhaCungCap)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-edit fas fa-pen"></i></button>
                                 <button class="delete__btn" (click) ="deleteLoaiSp(item.MaNhaCungCap)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-delete fas fa-trash"></i></button>

@@ -1,24 +1,56 @@
 <app-slideshow></app-slideshow>
 
-<div class="run-text container">
-    <div class="r-txt">
-        <b>Liên hệ với Điện máy xanh</b>
-         <i class="fas fa-caret-right"></i>
-    </div>
-    <div class="r1-txt">
-        <marquee>Điện máy xanh &nbsp; Gọi mua: 1800.1061 (7:30 - 22:00)
-
-            &nbsp;Kỹ thuật: 1800.1764 (7:30 - 22:00)
-            
-            &nbsp;Khiếu nại: 1800.1063 (8:00 - 21:30)
-            
-            &nbsp;Bảo hành: 1800.1065 (8:00 - 21:00) &nbsp; Địa chỉ: Dân Tiến
-                    Khoái Châu, Hưng Yên
-        </marquee>
-    </div>
-</div>    
-<div class="Container">
+  
+<div class="Container" >
     <div class="container">
+        <div class="Container__title">
+            <b>tivi mới về</b>
+        </div>
+        <div class="Container__product row">
+            <div class="col-lg-3 col-md-4 col-6" *ngFor = "let spmv of TrangChuGetspmvData | paginate: { itemsPerPage:8, currentPage: p }">
+                <div class="product-item">
+                    <button href="#" (click)="viewDetail(spmv.MaSanPham)" class="Home-product-item" style="border: none; outline: none;text-align: left;">
+                        <img src="../../../assets/user_UI/IMG/{{spmv.Anh}}" class="Home-product-item__img">
+                        <div class="Home-product-item__sale">
+                            <img class="Home-product-item__sale-icon" src="../../../assets/user_UI/IMG/icon1.png" >
+                            <span class="Home-product-item__sale-title"> giảm sốc</span>
+                        </div>
+                        <h4 class="Home-product-item__name">
+                            {{spmv.TenSanPham}}
+                        </h4>
+                        <div class="Home-product-item__compare">
+                            <span class="Home-product-item__compare-item"> {{spmv.KichCoManHinh}}</span>
+                            <span class="Home-product-item__compare-item">{{spmv.DoPhanGiai}}</span>
+                        </div>
+                        <div class="Home-product-item__title-online">
+                            <p>Online giá rẻ</p>
+                        </div>
+                        <div class="Home-product-item__price">
+                            <!-- <span class="Home_product-item__price-old">13.900.000đ</span>
+                            <span class="Home_product-item__price-percent">-14%</span> -->
+                            <span class="Home_product-item__price-curent" >{{spmv.Gia| currency:'VND':'symbol':'1.0-0'}}</span>
+                        </div>
+                        <div class="Home-product-item__action">
+                            <div class="Home-product-item__rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="Home-product-item__like">
+                                30
+                            </span>
+                        </div>
+                        <div class="Home-product-item__sale-off">
+                            <img src="../../../assets/user_UI/IMG/docquyen.png" >   
+                        </div>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+        <div style="font-size: 15px; margin-left: 70%; margin-top: 20px;"> <pagination-controls (pageChange)="p = $event"></pagination-controls> </div>
         <div class="Container__title ">
             <b>Tất cả Tivi</b>
         </div> 
@@ -67,61 +99,14 @@
                     </button>
                 </div>
                 
-            </div>
-            
-                       
+            </div>       
+             
         </div>
         <div style="font-size: 15px; margin-left: 70%; margin-top: 20px;"> <pagination-controls (pageChange)="p = $event"></pagination-controls> </div>
         
 
-        <div class="Container__title">
-            <b>tivi mới về</b>
-        </div>
-        <div class="Container__product row">
-            <div class="col-lg-3 col-md-4 col-6" *ngFor = "let spmv of TrangChuGetspmvData | paginate: { itemsPerPage:12, currentPage: p }">
-                <div class="product-item">
-                    <button href="#" (click)="viewDetail(spmv.MaSanPham)" class="Home-product-item" style="border: none; outline: none;text-align: left;">
-                        <img src="../../../assets/user_UI/IMG/{{spmv.Anh}}" class="Home-product-item__img">
-                        <div class="Home-product-item__sale">
-                            <img class="Home-product-item__sale-icon" src="../../../assets/user_UI/IMG/icon1.png" >
-                            <span class="Home-product-item__sale-title"> giảm sốc</span>
-                        </div>
-                        <h4 class="Home-product-item__name">
-                            {{spmv.TenSanPham}}
-                        </h4>
-                        <div class="Home-product-item__compare">
-                            <span class="Home-product-item__compare-item"> {{spmv.KichCoManHinh}}</span>
-                            <span class="Home-product-item__compare-item">{{spmv.DoPhanGiai}}</span>
-                        </div>
-                        <div class="Home-product-item__title-online">
-                            <p>Online giá rẻ</p>
-                        </div>
-                        <div class="Home-product-item__price">
-                            <!-- <span class="Home_product-item__price-old">13.900.000đ</span>
-                            <span class="Home_product-item__price-percent">-14%</span> -->
-                            <span class="Home_product-item__price-curent" >{{spmv.Gia| currency:'VND':'symbol':'1.0-0'}}</span>
-                        </div>
-                        <div class="Home-product-item__action">
-                            <div class="Home-product-item__rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <span class="Home-product-item__like">
-                                30
-                            </span>
-                        </div>
-                        <div class="Home-product-item__sale-off">
-                            <img src="../../../assets/user_UI/IMG/docquyen.png" >   
-                        </div>
-                    </button>
-                </div>
-            </div>
-            
-        </div>
-        <div style="font-size: 15px; margin-left: 70%; margin-top: 20px;"> <pagination-controls (pageChange)="p = $event"></pagination-controls> </div>
+        
+        
         <!-- <div class="Container__title">
             <b>tivi lg</b>
         </div>

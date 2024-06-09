@@ -23,6 +23,9 @@ import { DetailKhoComponent } from './detail-kho/detail-kho.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { NhacungcapComponent } from './nhacungcap/nhacungcap.component';
 import { KhachhangComponent } from './khachhang/khachhang.component';
+import { KhachHangOderComponent } from './khach-hang-oder/khach-hang-oder.component';
+import { KhachHangOderDetailComponent } from './khach-hang-oder-detail/khach-hang-oder-detail.component';
+import { HoadonnhapComponent } from './hoadonnhap/hoadonnhap.component';
 
 
 @NgModule({
@@ -43,6 +46,9 @@ import { KhachhangComponent } from './khachhang/khachhang.component';
     DetailKhoComponent,
     NhacungcapComponent,
     KhachhangComponent,
+    KhachHangOderComponent,
+    KhachHangOderDetailComponent,
+    HoadonnhapComponent,
     
   ],
   imports: [

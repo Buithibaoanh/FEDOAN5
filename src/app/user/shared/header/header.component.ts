@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { TrangchuService } from '../../service/trangchu/trangchu.service';
 import { CartService } from '../../service/cart/cart.service';
 import { Router } from '@angular/router';
+import { ShareDataService } from '../../service/share-data.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderComponent {
-  constructor(private trangchuService : TrangchuService, private router: Router, private cartService : CartService) {}
+  constructor(private trangchuService : TrangchuService, private router: Router, private cartService : CartService, private shareService : ShareDataService) {}
     TrangChuLSPApi: any = [];
     cartItems: any;
     keyword: any;
@@ -30,6 +31,16 @@ export class HeaderComponent {
     }
     viewCategori(MaLoai: number ) {      
       this.router.navigate(['categori', MaLoai]);
+    }
+
+    sendData() {
+      console.log(this.keyword);
+      var data = {
+        keyword: this.keyword
+      }
+      this.trangchuService.search(data).subscribe(res => {
+        this.shareService.sendData(res);
+      });
     }
     
    

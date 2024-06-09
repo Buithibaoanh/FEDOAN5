@@ -34,4 +34,7 @@ export class DonhangService {
   updateStatus(id: number, request: any):Observable<any> {
 		return this.http.post(`${this.baseURL}/QLDonhang/updateStatus/${id}`, request)
   }
+  searchOrders(criteria: any): Observable<any[]> {
+    return this.http.post<any[]>(`${this.baseURL}/QLDonhang/search`, criteria);
+  }
 }

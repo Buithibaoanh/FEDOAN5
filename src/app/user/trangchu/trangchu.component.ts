@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TrangchuService } from '../service/trangchu/trangchu.service';
 import { Router } from '@angular/router';
+import { ShareDataService } from '../service/share-data.service';
 @Component({
   selector: 'app-trangchu',
   templateUrl: './trangchu.component.html',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class TrangchuComponent {
   data = Array.from({length: 100}, (_, k) => `Item ${k + 1}`);
   p: number = 1;
-  constructor(private trangchuService : TrangchuService, private router: Router) {}
+  constructor(private trangchuService : TrangchuService, private router: Router, private sharedService: ShareDataService) {}
     TrangChuDataApi: any = [];
     sl: number = 1000;
     TrangChuGetByIdData: any = [];
@@ -21,6 +22,11 @@ export class TrangchuComponent {
     ngOnInit(): void {
         this.getData(this.sl);
         this.getspmv(this.sl);
+        this.sharedService.data$.subscribe(data => {
+          console.log(data);
+          this.TrangChuGetspmvData = data;  
+          this.TrangChuDataApi = [];              
+        });
     }
 
     getData(sl: number){
@@ -40,27 +46,7 @@ export class TrangchuComponent {
     viewDetail(MaSanPham: number ) {      
       this.router.navigate(['details', MaSanPham]);
     }
-    search(sl: number) {
-      if (!this.keyword) {
-          this.trangchuService.getList(sl).subscribe(res => {
-              this.TrangChuDataApi = res;
-          });
-      } else {
-          var data = {
-              keyword: this.keyword
-          }
-          this.trangchuService.search(data).subscribe(res => {
-              this.TrangChuDataApi = res;
-          });
-      }
-      // console.log(this.keyword);
-      // var data = {
-      //     keyword: this.keyword
-      // }
-      // this.sanphamService.search(data).subscribe(res => {
-      //     this.SanPhamDataApi = res;
-      // })
+ 
   }
     
    
-}

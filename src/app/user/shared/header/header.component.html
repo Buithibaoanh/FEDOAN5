@@ -1,54 +1,15 @@
 <div class="Header">
     <div class="container">
-        <div class="row navbar hide-on-tablet-mobile">
-            <ul class="navbar__list">
-                <li class="navbar__list-item">
-                    <i class="fa-solid fa-hand-holding-dollar"></i>
-                    Cam kết giá tốt</li>
-                <li class="navbar__list-item">
-                        <a href="" class="navbar__list-item-link">
-                            <i class="fa-solid fa-truck"></i>
-                            Miễn phí vận chuyển
-                        </a>
-                </li>
-                <li class="navbar__list-item">
-                        <a href="" class="navbar__list-item-link">
-                            <i class="fa-solid fa-clock-rotate-left"></i>
-                            Bảo hành tận nơi
-                        </a>
-                </li>
-            </ul>
-            <ul class="navbar__list">
-                <li class="navbar__list-item">
-                    <span class="navbar__list-title--no">Kết nối</span>
-                    <a  class="navbar__list-icons-link" href="https://www.facebook.com/baoanh.bui.3363" target="blank">
-                        <i class="navbar__list-icons fa-brands fa-facebook">
-                            <p class="navbar__list-icons-mesenger">Kết nối facebook</p>
-                        </i>
-                    </a>
-                    <a  class="navbar__list-icons-link" href="https://www.instagram.com/baoanh0911/saved/" target="blank">
-                        <i class="navbar__list-icons fa-brands fa-instagram">
-                            <p class="navbar__list-icons-mesenger">Kết nối instagram</p>
-                        </i>
-                    </a>
-                </li>  
-                <li class="navbar__list-item navbar__list-item--Strong">
-                    <i class="fa-solid fa-user-plus"></i>
-                    <a href="/HTML/dangky.html"> Đăng ký </a>
-                </li>
-                <li class="navbar__list-item navbar__list-item--Strong">
-                    <i class="fa-solid fa-user"></i>
-                    <a href="../HTML/login.html" >Đăng nhập</a>
-                </li>   
-            </ul>    
-        </div>
-        <div class="Header-with-search row">
+        <div class="Header-with-search row" style="margin-top: 0px;">
             <div class="Header__logo">
-                <img class="Header__logo-img"  src="../../../../assets/user_UI/IMG/Asset 1@300x (1).png">
+                <a class="Header-navbar__item-link" href="/" style="text-decoration: none">
+                    <img class="Header__logo-img"  src="../../../../assets/user_UI/IMG/Asset 1@300x (1).png">
+                </a>
+                
             </div>
-            <div class="Header__search hide-on-mobile">
-                <input type="text" class="Header__search-input" name="keyword" [(ngModel)]="keyword" placeholder="Nhập tên TiVi... cần tìm">
-                <button class="Header__search-btn">
+            <div class="Header__search hide-on-mobile" style="margin-left: 20px;">
+                <input type="text" class="Header__search-input" name="keyword"  [(ngModel)]="keyword" placeholder="Nhập tên TiVi... cần tìm">
+                <button class="Header__search-btn" id="btn-search" (click)="sendData()">
                     <i class="Header__search-btn-icon fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>
@@ -60,17 +21,18 @@
             </div>
         </div>
     </div>
+               
     <div class="Header-navbar hide-on-tablet-mobile">
         <div class="container">
             <ul class="Header-navbar__list row">
                 <li class="Header-navbar__item">
-                    <a class="Header-navbar__item-link" href="/">
+                    <a class="Header-navbar__item-link" href="/" style="text-decoration: none">
                         <i class="navbar__list-icons fa-solid fa-list"></i>
                         Danh mục sản phẩm
                     </a>
                     <ul class="submenu" >
                         <li class="submenu__item" *ngFor = "let item of TrangChuLSPApi">
-                            <button class="submenu__item-link" href="#" (click)="viewCategori(item.MaLoai)" style="text-align: left;">
+                            <button class="submenu__item-link"  (click)="viewCategori(item.MaLoai)" style="text-align: left;">
                                 <i class="navbar__list-icons fa-solid fa-tv"></i>
                                 {{item.TenLoai}}
                             </button>

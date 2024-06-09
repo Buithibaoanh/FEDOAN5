@@ -15,6 +15,10 @@ export class DonhangComponent {
     TrangThai: any;
     p: number = 1;
     modalType: 'create' | 'update' = 'create';
+    
+    searchCriteria = {
+      trangThai: '' // Khởi tạo searchCriteria với trangThai là một chuỗi rỗng
+    };
 
     ngOnInit(): void {
         this.getData();
@@ -167,4 +171,28 @@ export class DonhangComponent {
           }
         );
     }
+    
+  
+    onSearch() {
+      if (!this.searchCriteria.trangThai) {
+        this.donhangService.getList().subscribe((res) => {
+          this.DonhangDataApi = res;
+        });
+      } else {
+        this.donhangService.searchOrders(this.searchCriteria).subscribe((data) => {
+          this.DonhangDataApi = data;
+        });
+      }
+    }
+    getStatusText(trangThai: number): string {
+      switch (trangThai) {
+        case 0: return 'Chờ xác nhận';
+        case 1: return 'Đã xác nhận';
+        case 2: return 'Đang giao hàng';
+        case 3: return 'Giao thành công';
+        case 4: return 'Đã hoàn hàng';
+        default: return 'Trạng thái không xác định';
+      }
+    }
+
 }

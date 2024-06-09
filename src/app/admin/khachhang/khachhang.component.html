@@ -1,1 +1,54 @@
-<p>khachhang works!</p>
+<div  class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Quản lý nhà khách hàng</h6>
+            <!-- <button class="btn btn--primary" (click) ="showModal('create')">Thêm mới</button> -->
+        </div>
+        <div class="input-group" style="width: 50%; margin-left: 50px; margin-top: 20px;">
+            
+            <div class="input-group-append" style="background-color: #4e73df;">
+                
+                
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table " id="dataTable" width="100%" cellspacing="0" style="color: black;">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                           
+                            <th>Tên khách hàng</th>
+                            <th>Địa chỉ</th>
+                            <th style="text-align: center;">Số điện thoại</th>
+                            <th style="text-align: right;">Tổng bán</th>
+                            <th style="text-align: center;">Xem chi tiết</th>
+                            <!-- <th>Chức năng</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let item of khachhangData | paginate: { itemsPerPage: 10, currentPage: p }; let i = index" >
+                            <td>{{ i + 1 + (p - 1) * 10 }}</td>
+                            
+                            <td>{{ item.TenKhachHang }}</td>
+                            <td>{{ item.DiaChi }}</td>
+                            <td style="text-align: center;">{{ item.SoDienThoai }}</td>
+                            <td style="text-align: right;">{{ item.TongThanhTien | currency:'VND':'symbol':'1.0-0' }}</td>
+                            <!-- <td class="table__data-td">
+                                <button class="edit__btn"  (click) ="editModalDepartment(item.MaNhaCungCap)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-edit fas fa-pen"></i></button>
+                                <button class="delete__btn" (click) ="deleteLoaiSp(item.MaNhaCungCap)" style="background-color: transparent; border: none;"><i class="table__icon table__icon-delete fas fa-trash"></i></button>
+                            </td> -->
+                            <td style="text-align: center;">
+                                <button (click)="viewDH(item.DanhSachDonHang)"  style="background-color: #6777ef;border-radius: 0.35rem; padding: 0.30rem 0.4rem;color: #fff;border: none;">Xem chi tiết</button>
+                            </td>
+                        </tr>
+                        
+                        
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
