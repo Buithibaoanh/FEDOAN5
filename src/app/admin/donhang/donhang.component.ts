@@ -2,6 +2,7 @@ import { HttpResponse } from '@angular/common/http';
 import {DonhangService} from '../service/donhang/donhang.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SendmailService } from 'src/app/user/service/sendmail/sendmail.service';
 
 @Component({
   selector: 'app-donhang',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./donhang.component.css']
 })
 export class DonhangComponent {
-  constructor(private donhangService : DonhangService ,private router: Router) {}
+  constructor(private donhangService : DonhangService ,private router: Router, private sendMailService : SendmailService) {}
     DonhangDataApi: any = [];
     DonHangGetByIdData:any = [];
     TrangThai: any;
@@ -64,11 +65,14 @@ export class DonhangComponent {
           
       })
     }
-    updateDonHang(Id: number)
+    updateDonHang(Id: number, email: string)
     {
-
         const body = { TrangThai: 2 };
         let id = Id;
+        let data = {
+          email
+        }
+        this.sendMailService.sendDangGiao(data).subscribe((res) => {})
         this.donhangService.putdonhang(id, body).subscribe(
           (res: HttpResponse<any>) => {
             alert('Cập nhật trạng thái thành công');
@@ -86,7 +90,7 @@ export class DonhangComponent {
       this.router.navigate(['/admin/chitietdonhang', MaDonHang]);
     }
 
-    onStatusChange(event: any, maDonHang: number) {
+    onStatusChange(event: any, maDonHang: number, email: string) {
         const selectedValue = event.target.value;
     
         switch (selectedValue) {
@@ -97,13 +101,13 @@ export class DonhangComponent {
             this.approveDonHang(maDonHang);
             break;
           case 'updateDonHang':
-            this.updateDonHang(maDonHang);
+            this.updateDonHang(maDonHang, email);
             break;
           case 'cancel':
             this.cancelDonHang(maDonHang);
             break;
           case 'deliver':
-            this.deliverDonHang(maDonHang);
+            this.deliverDonHang(maDonHang, email);
             break;
           default:
             break;
@@ -157,9 +161,14 @@ export class DonhangComponent {
         );
     }
 
-    deliverDonHang(maDonHang: number) {
+    deliverDonHang(maDonHang: number, email: string) {
         const body = { TrangThai: 1 };
         let id = maDonHang;
+        let data = {
+            email,
+            maDonHang
+        }
+        this.sendMailService.sendConfirm(data).subscribe((res) => {})
         this.donhangService.updateStatus(id, body).subscribe(
           (res: HttpResponse<any>) => {
             console.log(res.status);

@@ -56,7 +56,7 @@
                             </td>
                             <td style="text-align: center;"><button (click)="viewChitietDH(item.MaDonHang)" style="background-color: #6777ef;border-radius: 0.35rem; padding: 0.30rem 0.4rem;color: #fff;border: none;">Xem chi tiết</button></td>
                             <td class="table__data-td">
-                                <select class="form-select" (change)="onStatusChange($event, item.MaDonHang)" style="padding: 5px;border-radius: 10px;"
+                                <select class="form-select" (change)="onStatusChange($event, item.MaDonHang, item.Email)" style="padding: 5px;border-radius: 10px;"
                                         [disabled]="item.TrangThaiText === 'Đã hoàn hàng'" 
                                         *ngIf="item.TrangThaiText !== 'Từ chối' && item.TrangThaiText !== 'Hủy'">
                                     <option value="" disabled selected>Chọn trạng thái</option>

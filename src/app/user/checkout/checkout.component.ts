@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../service/cart/cart.service';
 import { CheckoutService } from '../service/checkout/checkout.service';
+import { SendmailService } from '../service/sendmail/sendmail.service';
 
 @Component({
   selector: 'app-checkout',
@@ -8,7 +9,7 @@ import { CheckoutService } from '../service/checkout/checkout.service';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit{
-    constructor(private cartService: CartService , private checkoutSerivce : CheckoutService) {}
+    constructor(private cartService: CartService , private checkoutSerivce : CheckoutService, private sendMail : SendmailService) {}
     cartItems: any[] = [];
     number: string = '';
     address: string = '';
@@ -60,13 +61,17 @@ export class CheckoutComponent implements OnInit{
             Sanphamjson: JSON.stringify(this.cartItems)
         }
 
+        let data = {
+            email: this.email
+        }
+
+        this.sendMail.post(data).subscribe((res) => {
+            alert("Thanh toán thành công! Cảm ơn bạn đã mua hàng.");
+        })
+            
         this.checkoutSerivce.post(body).subscribe((res) =>{
             this.cartService.clearCart();
-            console.log(1);
-            
-            alert("Thanh toán thành công! Cảm ơn bạn đã mua hàng.");
             window.location.href = "/";
-        });
-        
+        });    
     }
 }
